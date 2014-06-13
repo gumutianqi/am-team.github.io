@@ -1,0 +1,710 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="generator" content="nico 0.5.0">
+    <meta name="theme" content="autumn 0.1">
+    <title>AlipayJSBridge | AM WIKI</title>
+    <link rel="stylesheet" href="../static/1140.css" />
+    <link rel="stylesheet" href="../static/wiki.css" />
+    <link rel="stylesheet" href="../static/syntax.css" />
+  </head>
+<body>
+  <div class="wrap">
+    <div class="main">
+      <div class="header">
+        <div class="slogan row">
+            <img src="https://i.alipayobjects.com/i/ecmng/png/201406/2m8Ebk4eZh.png" class="slogan-logo" alt=""/> <span>Alipay Mobile</span>
+        <span class="search">
+           <!--<input type="text" id="search" placeholder="搜点东西...">-->
+        </span>
+
+        </div>
+          <div class="header-nav">
+                <div class="navigation row-n">
+                    
+<ul class="nav">
+    <li>
+        <a  archiveId = "about" href="../about/about.html">
+        关于AM </a>
+        
+    </li>
+    
+    <li>
+        <a  archiveId = "amj" href="../amj/about.html">
+        AMJ </a>
+        
+        <ul class="nav-sub">
+              <li>
+                  <a href="../amj/about.html">关于AMJ</a>
+              </li>
+            
+              <li>
+                  <a href="../amj/amj接口文档.html">接口文档</a>
+              </li>
+            
+        </ul>
+        
+    </li>
+    
+    <li>
+        <a  archiveId = "amui" href="../amui/about.html">
+        AMUI </a>
+        
+        <ul class="nav-sub">
+              <li>
+                  <a href="../amui/about.html">使用文档</a>
+              </li>
+            
+              <li>
+                  <a href="../amui/think.html">建设想法</a>
+              </li>
+            
+        </ul>
+        
+    </li>
+    
+    <li>
+        <a  archiveId = "amb" href="../amb/about.html">
+        AMB </a>
+        
+        <ul class="nav-sub">
+              <li>
+                  <a href="../amb/about.html">关于AMB</a>
+              </li>
+            
+        </ul>
+        
+    </li>
+    
+    <li>
+        <a  archiveId = "amt" href="../amt/about.html">
+        AMT </a>
+        
+    </li>
+    
+    <li>
+        <a  class="active"  archiveId = "h5container" href="about.html">
+        H5Container </a>
+        
+        <ul class="nav-sub">
+              <li>
+                  <a href="about.html">关于H5Container</a>
+              </li>
+            
+              <li>
+                  <a href="doc.html">接口文档</a>
+              </li>
+            
+              <li>
+                  <a href="alipayjsbridge.html">AlipayJSBridge</a>
+              </li>
+            
+              <li>
+                  <a href="h5appdemo.html">离线类H5App开发指南</a>
+              </li>
+            
+        </ul>
+        
+    </li>
+    
+    <li>
+        <a  archiveId = "sample" href="../sample">
+        样例库 </a>
+        
+    </li>
+    
+    <li>
+        <a  archiveId = "bookmarks" href="../../../../../../../AM/">
+        书签 </a>
+        
+        <ul class="nav-sub">
+              <li>
+                  <a href="http://caniuse.com/../">Can I use</a>
+              </li>
+            
+              <li>
+                  <a href="http://www.base64-image.de/../">base64 Image</a>
+              </li>
+            
+        </ul>
+        
+    </li>
+    
+    <li>
+        <a  archiveId = "wiki" href="../../../../../../../AMWD/">
+        知识库 </a>
+        
+    </li>
+    
+</ul>
+
+                </div>
+          </div>
+      </div>
+
+
+
+      
+<div class="row mar">
+    <div class="threecol meta">
+        <ul class="sub-nav">
+    </ul>
+    </div>
+    
+ 
+    <div class="ninecol content">
+          <div class="document">
+          <div class="post-header">
+       <h2 class="document-title">AlipayJSBridge</h2>
+            <div class="post-meta"><span>左契</span> / <time datetime="2014-03-06">2014-03-06</time></div>
+          </div>
+            <div class="entry-content">
+              <h2 id="接口调用前提">接口调用前提</h2><ul>
+<li><p>添加 AlipayJSBridgeReady 监听事件的作用
+js bridge是在webview加载完成后才注入到页面中的，所以：
+1、如果页面加载的过程中，就需要调用容器的接口显然是无法被处理的。这时候就需要将接口调用的代码统一放到AlipayJSBridgeReady的监听事件中去，js bridge注入完成后就可触发。
+2、如果是通过事件触发，例如，点击某按钮、某链接才去调用容器的接口，那可以忽略此监听事件</p>
+</li>
+<li><p>代码示例( 新 )</p>
+<pre>
+function AlipayJSBridgeReady(fn){
+    if(window.AlipayJSBridge){
+        fn();
+    }else{
+        document.addEventListener('AlipayJSBridgeReady',function(){
+            fn();
+        },false);
+    }
+}
+</pre>
+</li>
+<li><p>代码示例( 老 )</p>
+<pre>
+//异步使用会影响监听事件无法被处理，不建议将该监听事件放到异步处理中，例如，不建议放在seajs.use中使用。
+document.addEventListener('AlipayJSBridgeReady',function(){
+    AlipayJSBridge.call('toast', {
+                content: 'toast测试'
+            });
+},false);
+</pre>
+</li>
+<li><p>接口测试页:<br/>
+<a href=""><a href="http://ux.alipay-inc.com/test/alipayBridge/test.html">http://ux.alipay-inc.com/test/alipayBridge/test.html</a> <a href="http://ux.alipay-inc.com/test/alipayBridge/test.html">http://ux.alipay-inc.com/test/alipayBridge/test.html</a></a></p>
+</li>
+</ul>
+<h2 id="接口示例">接口示例</h2><h3 id="获取网络状态">获取网络状态</h3><ul>
+<li>为了方便开发者根据用户的网络状态来提供不同质量的服务，公众号可以在公众号内部的网页中使用JavaScript代码调用来获取网络状态。</li>
+<li>代码示例<pre>
+AlipayJSBridge.call('getNetworkType', function (result) {
+//result.err_msg
+// "network_type:wifi" wifi网络
+// "network_type:edge" 非wifi,包含3G/2G
+// "network_type:fail" 网络断开连接
+// "network_type:wwan"（2g或者3g）
+});
+</pre>
+
+</li>
+</ul>
+<h3 id="调用快捷支付">调用快捷支付</h3><ul>
+<li>该方法通过调用安全支付来进行支付操作</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tradeNO</td>
+<td>string</td>
+<td>订单流水号。多个订单流水号用&quot;;&quot;隔开。</td>
+</tr>
+<tr>
+<td>partnerID</td>
+<td>string</td>
+<td>商户id，可选，默认为&quot;&quot;</td>
+</tr>
+<tr>
+<td>bizType</td>
+<td>string</td>
+<td>交易类型，可选, 默认为&quot;&quot;</td>
+</tr>
+<tr>
+<td>bizSubType</td>
+<td>string</td>
+<td>交易子类型，可选,  默认为&quot;&quot;</td>
+</tr>
+<tr>
+<td>displayPayResult</td>
+<td>bool</td>
+<td>是否显示支付结果页. 可选. 默认为true</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>代码示例<pre>
+AlipayJSBridge.call("tradePay",{
+tradeNO: "201209071234123221",
+ partnerID:"",
+bizType:"trade",
+bizSubType:""
+}, function(result){
+/*
+ * result为支付结果
+ * result.resultCode 结果码，字符串，以下为常见值：
+ *   "9000" 订单支付成功
+ *   "8000" 正在处理中
+ *   "4000" 订单支付失败
+ *   "6001" 用户中途取消
+ *   "6002" 网络连接出错
+ * result.callbackUrl 支付完成以后跳转的url. 可能为空(""/null/undefined)
+ */
+});
+</pre>
+
+</li>
+</ul>
+<h3 id="账户充值-钱包8-1可用">账户充值(钱包8.1可用)</h3><ul>
+<li>唤起快捷进行账户充值</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>displayPayResult</td>
+<td>bool</td>
+<td>是否显示支付结果页. 可选. 默认为true</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>代码示例<pre>
+AlipayJSBridge.call("deposit",{
+displayPayResult: false
+}, function(result){
+/*
+ * result为支付结果
+ * result.resultCode 结果码，字符串，以下为常见值：
+ *   "9000" 订单支付成功
+ *   "8000" 正在处理中
+ *   "4000" 订单支付失败
+ *   "6001" 用户中途取消
+ *   "6002" 网络连接出错
+ * result.callbackUrl 支付完成以后跳转的url. 可能为空(""/null/undefined)
+ */
+});
+</pre>
+
+</li>
+</ul>
+<h3 id="startapp">startApp</h3><ul>
+<li>启动app</li>
+<li>代码示例<pre>
+AlipayJSBridge.call('startApp', {
+appId:'10000008',
+param:{
+}
+});
+</pre>
+
+</li>
+</ul>
+<h3 id="postnotification">postNotification</h3><ul>
+<li>在钱包里广播消息</li>
+<li>代码示例<pre>
+AlipayJSBridge.call('postNotification', {
+name:'notifyHomeRefresh'
+});
+</pre></li>
+<li>目前支持的消息名称列表固定，如下</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notifyHomeRefresh</td>
+<td>通知首页刷新公众号列表</td>
+</tr>
+</tbody>
+</table>
+<h3 id="设置标题栏">设置标题栏</h3><ul>
+<li>显示/隐藏标题栏</li>
+<li><p>代码示例</p>
+<pre>
+AlipayJSBridge.call("hideTitlebar");
+AlipayJSBridge.call("showTitlebar");
+</pre>
+</li>
+<li><p>设置标题文字</p>
+</li>
+<li>注意：需要先保证标题栏是显示的</li>
+<li><p>代码示例</p>
+<pre>
+AlipayJSBridge.call('setTitle', {
+title:'券市场'
+});
+</pre>
+</li>
+<li><p>设置标题右侧按钮及菜单</p>
+</li>
+<li>显示/隐藏网页右上角按钮</li>
+<li><p>代码示例</p>
+<pre>
+AlipayJSBridge.call("hideOptionMenu");
+AlipayJSBridge.call("showOptionMenu");
+</pre>
+</li>
+<li><p>监听标题右侧按钮触发事件</p>
+</li>
+<li><p>代码示例</p>
+<pre>
+document.addEventListener('optionMenu', function () {
+//回调事件
+},false);
+</pre>
+</li>
+<li><p>设置标题栏右侧按钮属性</p>
+</li>
+<li>注意：需要先确认标题栏右侧按钮是显示的</li>
+<li>代码示例
+<pre>
+AlipayJSBridge.call(&#39;setOptionMenu&#39;, {
+//按钮文字和图片只能选一个
+title : &#39;按钮&#39;,
+icon : &#39;<a href="http://pic.alipayobjects.com/e/201212/1ntOVeWwtg.png">http://pic.alipayobjects.com/e/201212/1ntOVeWwtg.png</a>&#39;,</li>
+</ul>
+<p>});
+</pre>
+其他：暂不可用
+//icon建议尺寸为40*40（支付宝钱包ios视觉规范），如果你不想费神，可只设置这一种值。
+//如需对android不同分辨率做处理，目前支持普通（drawable）和高清（drawable-hdpi）两种
+    &#39;drawable&#39; : &#39;<a href="http://pic.alipayobjects.com/e/201212/1ntOVeWwtg.png">http://pic.alipayobjects.com/e/201212/1ntOVeWwtg.png</a>&#39;,
+    &#39;drawable-hdpi&#39; : &#39;<a href="http://pic.alipayobjects.com/e/201212/1ntOVeWwtg.png">http://pic.alipayobjects.com/e/201212/1ntOVeWwtg.png</a>&#39;</p>
+<h3 id="关闭webview">关闭webview</h3><ul>
+<li>代码示例<pre>
+AlipayJSBridge.call("closeWebview");
+</pre>
+
+</li>
+</ul>
+<h3 id="设置底部工具栏">设置底部工具栏</h3><ul>
+<li>显示/隐藏工具栏</li>
+<li><p>代码示例</p>
+<pre>
+AlipayJSBridge.call("hideToolbar");
+AlipayJSBridge.call("showToolbar");
+</pre>
+</li>
+<li><p>设置“更多”按钮
+*</p>
+</li>
+</ul>
+<h3 id="pushwindow">pushWindow</h3><ul>
+<li>打开新的webview窗口</li>
+<li>代码示例<pre>
+AlipayJSBridge.call("pushWindow", {
+//只支持绝对路径，例：http://m.alipay.com，相对路径需要用户用JS来拼接成绝对路径
+url:'http://m.alipay.com',
+param:{
+    readTitle : true, //是否读取页面中的title标签内容
+    defaultTitle:'test xxx',
+    showTitleBar:true, //显示/隐藏顶部标题栏
+    showToolBar:false, //显示/隐藏底部工具栏
+    showLoading:false, //显示/隐藏loading
+    closeButtonText:'关闭2' //底部工具栏关闭按钮文字
+}
+});
+</pre>
+
+
+</li>
+</ul>
+<h3 id="popwindow">popWindow</h3><ul>
+<li>关闭当前webview窗口</li>
+<li>代码示例<pre>
+AlipayJSBridge.call("popWindow");
+</pre>
+
+</li>
+</ul>
+<h3 id="resume">resume</h3><ul>
+<li><p>事件说明
+重新回到事件注册页面时触发</p>
+</li>
+<li><p>代码示例
+监听事件</p>
+<pre>
+document.addEventListener('resume', function(){
+console.log('resume');
+},false);
+</pre>
+
+</li>
+</ul>
+<h3 id="toast">toast</h3><ul>
+<li>页面提示，3秒后消失</li>
+<li>代码示例<pre>
+AlipayJSBridge.call("toast",{
+content:'您的号码输入错误'
+});
+</pre>
+
+</li>
+</ul>
+<h3 id="loading">loading</h3><ul>
+<li>显示loading后，只有标题栏、工具栏可以操作</li>
+<li>代码示例
+<pre>
+AlipayJSBridge.call(&#39;showLoading&#39;);
+AlipayJSBridge.call(&#39;hideLoading&#39;);
+</pre>
+出loading时，应考虑页面不能操作的情况，此时是否应该显示toolbar，来防止页面长时间未响应而造成用户无法操作。</li>
+</ul>
+<h3 id="login">login</h3><ul>
+<li>唤起登录，有回调功能</li>
+<li>代码示例
+<pre>
+AlipayJSBridge.call(&#39;login&#39;, function () {
+console.log(&#39;login success&#39;);
+});
+</pre>
+此方法适合在alipay内部的运营页使用</li>
+</ul>
+<h3 id="通讯录">通讯录</h3><ul>
+<li>代码示例<pre>
+AlipayJSBridge.call('contact', function (result) {
+/*
+result:{
+    name : 'XXX', //姓名
+    mobile : '15088640308' //电话
+}
+*/
+});
+</pre>
+
+</li>
+</ul>
+<h3 id="发短信">发短信</h3><ul>
+<li>代码示例<pre>
+AlipayJSBridge.call('sendSMS', {
+mobile:'15088640308',
+content:'Hello, baby!'
+}, function(result){
+/*
+    result.status     //状态码，字符串，以下为常见值
+    "Success"   发送成功
+    "Failed"      发送失败，比如网络问题
+    "Canceled"   取消发送
+   */
+});
+</pre>
+
+</li>
+</ul>
+<h3 id="分享">分享</h3><ul>
+<li>代码示例<pre>
+AlipayJSBridge.call('share', {
+//只有一个分享渠道时，开启一键分享功能
+'channels': [{
+    name: 'Weibo', //新浪微博
+    param: {
+        title: '分享的标题',
+        content: '分享的内容',
+        imageUrl: '分享的图片地址',
+        captureScreen: true, //分享当前屏幕截图(和imageUrl同时存在时，优先取当前屏幕截图)
+        url: 'http://baidu.com' //分享跳转的url
+    }
+}, {
+    name: 'LaiwangContacts', //来往好友
+    param: {
+        title: '分享的标题',
+        content: '分享的内容',
+        imageUrl: '分享的图片地址',
+        captureScreen: true, //分享当前屏幕截图(和imageUrl同时存在时，优先取当前屏幕截图)
+        url: 'http://baidu.com' //分享跳转的url
+    }
+}, {
+    name: 'LaiwangTimeline', //来往好友圈
+    param: {
+        title: '分享的标题',
+        content: '分享的内容',
+        imageUrl: '分享的图片地址',
+        captureScreen: true, //分享当前屏幕截图(和imageUrl同时存在时，优先取当前屏幕截图)
+        url: 'http://baidu.com' //分享跳转的url
+    }
+}, {
+    name: 'Weixin', //微信
+    param: {
+        title: '分享的标题',
+        content: '分享的内容',
+        imageUrl: '分享的图片地址',
+        captureScreen: true, //分享当前屏幕截图(和imageUrl同时存在时，优先取当前屏幕截图)
+        url: 'http://baidu.com' //分享跳转的url
+    }
+}, {
+    name: 'WeixinTimeLine', //微信朋友圈
+    param: {
+        title: '分享的标题',
+        content: '分享的内容',
+        imageUrl: '分享的图片地址',
+        captureScreen: true, //分享当前屏幕截图(和imageUrl同时存在时，优先取当前屏幕截图)
+        url: 'http://baidu.com' //分享跳转的url
+    }
+}, {
+    name: 'SMS', //短信
+    param: {
+        content: '短信内容',
+        mobile: '15012345678'
+    }
+}, {
+    name: 'CopyLink', //复制链接
+    param: {
+        url: 'http://m.alipay.com'
+    }
+}]
+});
+</pre>
+
+</li>
+</ul>
+<h3 id="调整字体大小">调整字体大小</h3><p>android和ios调整字体大小是由native来实现的，使用代码完全不一样。ios用webkitTextSizeAdjust来调整字体大小，但在万达的公众号中发现，zoom和webkitTextSizeAdjust同时使用会有冲突，影响页面展现。</p>
+<h2 id="安全模式">安全模式</h2><p>当容器的启动参数指定safeMode为YES时，部分JsApi不可用(调用后Native端不会响应):
+<em> startApp
+</em> tradePay
+<em> login
+</em> 调通讯录(key待定)
+<em> 调短信界面(key待定)
+</em> 分享</p>
+<h2 id="其他">其他</h2><p>以下内容暂时不用了</p>
+<p>测试环境，页面请引入js：<br/></p>
+<pre>&lt;script src=&quot;http://ux.alipay-inc.com/test/alipayBridge/js/bridge.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+</pre><p>线上环境
+native注入脚本，页面中将不需要引入bridge.js</p>
+
+            </div>
+
+    <!-- Duoshuo Comment BEGIN -->
+      <div id="comment">
+      <div class="ds-thread" data-thread-key="alipayjsbridge" data-title="AlipayJSBridge" data-author-key="1"></div>
+      </div>
+      <script type="text/javascript">
+      var duoshuoQuery = {short_name:"amwd"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = 'http://static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- Duoshuo Comment END -->
+
+    </div>
+    </div>
+</div>
+
+ 
+ 
+ </div>
+ </div>
+         <!--<div class="logo">-->
+          <!--&lt;!&ndash;<div class="logo-inner"></div>&ndash;&gt;-->
+        <!--</div>-->
+  <div class="footer">
+      <div class="grid-990 sitelink fn-clear" coor="sitelink" role="contentinfo">
+          <ul class="ui-link fn-clear">
+              <!-- XT:支付宝首页/默认频道/支付宝新首页开始:www.alipay.com/i/indexb.vm -->                    <li class="ui-link-item"><a href="http://ab.alipay.com/i/index.htm" target="_blank" title="关于支付宝" seed="grid990-link" smartracker="on">关于支付宝</a></li>
+              <li class="ui-link-item"><a href="http://blog.alipay.com/" target="_blank" title="官方博客" seed="grid990-linkT1" smartracker="on">官方博客</a></li>
+              <li class="ui-link-item"><a href="http://job.alipay.com/index.php" target="_blank" title="诚征英才" seed="grid990-linkT2" smartracker="on">诚征英才</a></li>
+              <li class="ui-link-item"><a href="https://open.alipay.com/index.htm" target="_blank" title="开放平台" seed="grid990-linkT3" smartracker="on">开放平台</a></li>
+              <li class="ui-link-item"><a href="http://ab.alipay.com/i/lianxi.htm" target="_blank" title="联系我们" seed="grid990-linkT4" smartracker="on">联系我们</a></li>
+              <li class="ui-link-item"><a href="http://fun.alipay.com/sitemap/index.htm" target="_blank" title="网站地图" seed="grid990-linkT5" smartracker="on">网站地图</a></li>
+              <li class="ui-link-item"><a href="http://global.alipay.com/ospay/home.htm" target="_blank" title="International Business" seed="grid990-International-Business" smartracker="on">International Business</a></li>
+              <li class="ui-link-item ui-link-item-last"><a href="http://ab.alipay.com/i/jieshao.htm#en" target="_blank" title="About Alipay" seed="grid990-About-Alipay" smartracker="on">About Alipay</a></li>
+              <!-- XT:支付宝首页/默认频道/支付宝新首页结束:www.alipay.com/i/indexb.vm -->        </ul>
+          <ul class="ui-link fn-clear">
+              <!-- XT:支付宝首页/默认频道/支付宝新首页开始:www.alipay.com/i/indexb.vm -->          <li class="ui-link-item"><a href="http://page.1688.com/shtml/about/ali_group1.shtml" target="_blank" title="阿里巴巴集团" seed="grid990-linkT7" smartracker="on">阿里巴巴集团</a></li>
+              <li class="ui-link-item"><a href="http://www.alibaba.com/" target="_blank" title="阿里巴巴国际站" seed="grid990-linkT8" smartracker="on">阿里巴巴国际站</a></li>
+              <li class="ui-link-item"><a href="http://www.1688.com/" target="_blank" title="阿里巴巴中国站" seed="grid990-linkT9" smartracker="on">阿里巴巴中国站</a></li>
+              <li class="ui-link-item"><a href="http://www.aliexpress.com/" target="_blank" title="全球速卖通" seed="grid990-linkT10" smartracker="on">全球速卖通</a></li>
+              <li class="ui-link-item"><a href="http://www.taobao.com/" target="_blank" title="淘宝网" seed="grid990-linkT11" smartracker="on">淘宝网</a></li>
+              <li class="ui-link-item"><a href="http://www.tmall.com/" target="_blank" title="天猫" seed="grid990-linkT12" smartracker="on">天猫</a></li>
+              <li class="ui-link-item"><a href="http://ju.taobao.com" target="_blank" title="聚划算" seed="grid990-linkT13" smartracker="on">聚划算</a></li>
+              <li class="ui-link-item"><a href="http://www.etao.com/?tbpm=t" target="_blank" title="一淘" seed="grid990-linkT14" smartracker="on">一淘</a></li>
+              <li class="ui-link-item"><a href="http://www.alimama.com/index.htm" target="_blank" title="阿里妈妈" seed="grid990-linkT15" smartracker="on">阿里妈妈</a></li>
+              <li class="ui-link-item"><a href="http://trip.taobao.com/" target="_blank" title="淘宝旅行" seed="grid990-linkT16" smartracker="on">淘宝旅行</a></li>
+              <li class="ui-link-item"><a href="http://www.xiami.com/" target="_blank" title="虾米" seed="grid990-linkT17" smartracker="on">虾米</a></li>
+              <li class="ui-link-item"><a href="http://www.aliyun.com/" target="_blank" title="阿里云计算" seed="grid990-linkT18" smartracker="on">阿里云计算</a></li>
+              <li class="ui-link-item"><a href="http://www.yunos.com/" target="_blank" title="云OS" seed="grid990-linkT19" smartracker="on">云OS</a></li>
+              <li class="ui-link-item"><a href="http://www.net.cn/" target="_blank" title="万网" seed="grid990-linkT20" smartracker="on">万网</a></li>
+              <li class="ui-link-item"><a href="https://www.alipay.com/" target="_blank" title="支付宝" seed="grid990-linkT21" smartracker="on">支付宝</a></li>
+              <li class="ui-link-item ui-link-item-last"><a href="https://www.laiwang.com/" target="_blank" title="来往" seed="grid990-linkT22" smartracker="on">来往</a></li>
+              <!-- XT:支付宝首页/默认频道/支付宝新首页结束:www.alipay.com/i/indexb.vm -->        </ul>
+          <ul class="ui-link ui-link-bottom fn-clear">
+              <li class="ui-link-item ui-link-item-last">支付宝版权所有 2004-2014 <a href="http://fun.alipay.com/certificate/jyxkz.htm" target="_blank" seed="grid990-linkT6" smartracker="on">ICP证: 浙B2-20120045</a></li>
+          </ul>
+
+      </div>
+  </div>
+</body>
+    <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="../static/global.js">
+    </script>
+    <script>
+        seajs.config({
+            alias: {
+                "$": 'jquery/jquery/1.7.2/jquery'
+            }
+        });
+        seajs.use(['arale/autocomplete/1.2.3/autocomplete','$'], function(AutoComplete,$) {
+          $('.logo').click(function (e) {
+              $('body,html').animate({
+                scrollTop: 0
+          }, 500);
+            e.preventDefault();
+          });
+            new AutoComplete({
+                trigger: '#search',
+                filter:"stringMatch",
+                dataSource: [
+                 "../about/about.html",
+                 "../amb/about.html",
+                 "../amj/about.html",
+                 "../amj/amj接口文档.html",
+                 "../amt/about.html",
+                 "../amui/about.html",
+                 "../amui/",
+                 "../amui/old.html",
+                 "../amui/think.html",
+                 "about.html",
+                 "alipayjsbridge.html",
+                 "doc.html",
+                 "h5appdemo.html",
+                 "../sample/about.html",
+                ]
+            }).render().on('itemSelect',function  (data) {
+              window.location = data.matchKey;
+            });
+        });
+
+    </script>
+
+</html>
