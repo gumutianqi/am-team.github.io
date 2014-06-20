@@ -1,0 +1,512 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="generator" content="nico 0.5.0">
+    <meta name="theme" content="autumn 0.1">
+    <title>alipay mobile widget | AM PORT</title>
+    <link rel="stylesheet" href="../static/1140.css" />
+    <link rel="stylesheet" href="../static/wiki.css" />
+    <link rel="stylesheet" href="../static/syntax.css" />
+  </head>
+<body>
+<div class="wrap">
+    <div class="main">
+        <div class="header">
+            <div class="slogan row">
+                <a href="../default.html"><img src="https://i.alipayobjects.com/i/ecmng/png/201406/2m8Ebk4eZh.png" class="slogan-logo" alt="alipay"/></a>
+                <span>无线Web开放解决方案</span>
+        <span class="search">
+           <!--<input type="text" id="search" placeholder="搜点东西...">-->
+        </span>
+
+            </div>
+            <div class="header-nav">
+                <div class="navigation row-n">
+                    
+<ul class="nav">
+    <li>
+        <a  archiveId = "about"
+        href="../about/about.html">
+        关于AM </a>
+        
+    </li>
+    
+    <li>
+        <a  archiveId = "amg"
+        href="../">
+        移动开发指南 </a>
+        
+        <ul class="nav-sub">
+            <li>
+                <a href="../amg/dev-guild.html">移动开发指南</a>
+            </li>
+            
+            <li>
+                <a href="../amg/website-guild.html">移动建站指南</a>
+            </li>
+            
+        </ul>
+        
+    </li>
+    
+    <li>
+        <a  archiveId = "amui"
+        href="../amui/about.html">
+        AMUI </a>
+        
+        <ul class="nav-sub">
+            <li>
+                <a href="../amui/about.html">关于AMUI</a>
+            </li>
+            
+            <li>
+                <a href="../amui/amui-doc.html">API文档</a>
+            </li>
+            
+        </ul>
+        
+    </li>
+    
+    <li>
+        <a  archiveId = "amj"
+        href="../amj/about.html">
+        AMJ </a>
+        
+        <ul class="nav-sub">
+            <li>
+                <a href="../amj/about.html">关于AMJ</a>
+            </li>
+            
+            <li>
+                <a href="../amj/aj-doc.html">接口文档</a>
+            </li>
+            
+        </ul>
+        
+    </li>
+    
+    <li>
+        <a  class="active"  archiveId = "amw"
+        href="about.html">
+        AMW </a>
+        
+        <ul class="nav-sub">
+            <li>
+                <a href="about.html">关于AMW</a>
+            </li>
+            
+            <li>
+                <a href="aw-doc.html">接口文档</a>
+            </li>
+            
+        </ul>
+        
+    </li>
+    
+    <li>
+        <a  archiveId = "H5Container"
+        href="../h5container/about.html">
+        AM Bridge </a>
+        
+        <ul class="nav-sub">
+            <li>
+                <a href="../h5container/about.html">关于H5Container</a>
+            </li>
+            
+            <li>
+                <a href="../h5container/ab-doc.html">AM Bridge组件</a>
+            </li>
+            
+            <li>
+                <a href="../h5container/public-home-api.html">容器API文档</a>
+            </li>
+            
+        </ul>
+        
+    </li>
+    
+    <li>
+        <a  archiveId = "wiki"
+        href="../">
+        知识库 </a>
+        
+        <ul class="nav-sub">
+            <li>
+                <a href="../wiki/bookmark.html">收藏阁</a>
+            </li>
+            
+        </ul>
+        
+    </li>
+    
+</ul>
+
+                </div>
+            </div>
+        </div>
+        
+<div class="row mar">
+    <div class="threecol meta">
+        <ul class="sub-nav">
+        </ul>
+    </div>
+    
+ 
+    <div class="ninecol content">
+        <div class="document">
+            <div class="post-header">
+                <h2 class="document-title">alipay mobile widget</h2>
+
+                <div class="post-meta">
+                    <!--<span></span> /-->
+                    <time datetime="2014-06-20">2014-06-20</time>
+                </div>
+            </div>
+            <div class="entry-content">
+                <h2 id="button">button</h2><pre>设置指定按钮的点击事件函数
+
+</pre><h3 id="接口列表">接口列表</h3><pre>    /**
+     * @name Button
+     * @class 封装的单个button类
+     * @param {Object} ele 传入Element类型的值
+     *
+     * @example
+     * var button = new Button(document.getElementById(&#39;button&#39;)});
+     */
+    var Button = function (ele)
+
+    /**
+     * Button类的prototype值，如果大于0则代表该button将启用timeLock功能，时间间隔内不能再次触发tap事件.
+     * @enum {number}
+     */
+    Button.prototype.timeLock = 0;
+
+    /**
+     * Button类的prototype值，如果为true则代表该button在timeLock期间会在dom结构上增加[disabled=&#39;disabled&#39;]属性
+     * @enum {boolean}
+     */
+    Button.prototype.autoDisabled = false;
+
+    /**
+     * 为一个Button实例绑定一个tap事件
+     * @param {function|number|boolean} [fn] 需要绑定的tap事件。如果为number类型则自动识别为timelock;如果为boolean自动识别为enableAutoDisabled
+     * @param {function|number|boolean} [timelock] 私有的timelock值。如果为boolean自动识别为enableAutoDisabled
+     * @param {function|number|boolean} [enableAutoDisabled] 私有的autoDisabled
+     * @returns {Button}
+     *
+     * @example
+     * var button = new Button(document.getElementById(&#39;button&#39;)}).tap(function(){});
+     */
+    Button.prototype.tap = function (fn, timelock, enableAutoDisabled)
+
+
+    /**
+     * 强制解锁一个button的锁定状态
+     */
+    Button.prototype.unlock = function ()</pre><h3 id="示例代码">示例代码</h3><pre>    var oBtn = new Button(document.getElementById(&#39;btn&#39;)});    //将#btn作为Button的实例化
+    oBtn.timeLock = 1000;            //1000毫秒内不可以再次触发事件
+    oBtn.autoDisabled = true;        //按钮不可点击
+    oBtn.unlock = true;                //按钮立刻可以点击并触发事件
+    oBtn.tap(                        //绑定指定的点击事件，在1000毫秒内不可再次触发亦不可点击
+        function(){
+            //指定事件
+        }, 
+        1000,
+        true
+    )</pre><h3 id="演示">演示</h3><h2 id="dialog">dialog</h2><pre>控制页面中提示窗的显示及设置参数
+
+</pre><h3 id="接口列表">接口列表</h3><pre>    /**
+     * 显示toast
+     *
+     * @memberof AW.dialog
+     *
+     * @desc 外部调用
+     *
+     */
+    show: function (callback)
+
+    /**
+     * 隐藏toast
+     *
+     * @memberof AW.dialog
+     *
+     * @desc 外部调用
+     *
+     */
+    hide: function ()
+
+    /**
+     * 确认按钮的回调函数
+     *
+     * @memberof AW.dialog
+     *
+     * @type {Function}
+     */
+    success: function ()
+
+    /**
+     * 取消按钮的回调函数
+     *
+     * @memberof AW.dialog
+     *
+     * @type {Function}
+     */
+    cancel: function ()</pre><h3 id="示例代码">示例代码</h3><pre>    /**
+     * 默认配置参数
+     *
+     * @memberof AW.dialog
+     * @param {!Object} target - className
+     * @param {!String} message - 默认文案
+     * @param {String} type - 类型（success | error | loading）
+     * @param {Number} hideDelay - 延迟隐藏时间（毫秒）
+     * @param {Number} showDelay - 延迟显示时间（毫秒）
+     * @param {String} animate - 动画效果
+     * @param {Boolean} isWebview - 是否开启容器调用（开启后不在容器则不调用）
+     *
+     * @desc 默认配置参数
+     *
+     */
+
+    var opt = {
+    {
+        target: &#39;.J-am-dialog&#39;,                //className
+        title: &#39;亲&#39;,                        //标题栏
+        message: &#39;这里是默认文案，请添加&#39;,    //默认文案
+        button: &#39;确定&#39;,                        //btn内容
+        animate: &#39;none&#39;,                    //动画效果
+        isWebview: true                        //是否开启容器调用
+    }
+
+    dialog(opt);    //开启窗口</pre><h3 id="演示-可选">演示 可选</h3><h2 id="inputformat">InputFormat</h2><p>对文本框中输入的数据自动格式化为某种固定格式。  </p>
+<p>支持 AMD、CMD 规范，在不使用此类规范的环境中会以 <a href="http://www.google.com">AW.InputFormat</a> 全局变量开放出来。</p>
+<p>API文档: <a href="http://site.alipay.im/AM/about/about.html"><a href="http://site.alipay.im/AM/about/about.html">http://site.alipay.im/AM/about/about.html</a></a></p>
+<h3 id="接口列表">接口列表</h3><pre>    /**
+     * @desc        输入事件监听
+     * @param       {HTMLInputElement[]}    list    要监听的文本框元素
+     * @name        AW.InputFormat.listen
+     */
+    kbc.listen = function (list)</pre><h3 id="示例代码">示例代码</h3><pre>    formatVal(&#39;abcdefghijkmln&#39;, &#39;4 &#39;);    //需要格式化的值为&#39;abcdefghijkmln&#39;，规则为4位一组，以空格分隔开
+        returns &#39;abcd efgh ijkm ln&#39;        //则返回值为&#39;abcd efgh ijkm ln&#39;
+    kbc.listen(list)                    //list为要监听的元素以数组形式的集合</pre><h3 id="演示-可选">演示 可选</h3><h2 id="lazyload">lazyload</h2><pre>控制文档中图片用简单图片占位，在onload后再加载真正图片，俗称懒加载
+
+</pre><h3 id="接口列表">接口列表</h3><pre>    /**
+     * 初始化方法
+     *
+     * @memberof AW.lazyload
+     * @param {!Object} options - 配置参数
+     *
+     * @desc 初始化方法(可供外部调用)
+     *
+     * @example
+     * AW.lazyload.init();
+     * AW.lazyload.init({offsetPre:20});
+     */
+    init: function (options)
+
+    /**
+     * 对资源池添加懒加载监听，仅运行一次
+     *
+     * @memberof AW.lazyload
+     *
+     * @desc 对资源池添加懒加载监听，仅运行一次(可供外部调用)
+     *
+     * @example
+     * AW.lazyload.run();
+     */
+    run: function ()
+
+    /**
+     * 添加新的图片
+     *
+     * @memberof AW.lazyload
+     * @param {?String|?Object} addStack - 可以为选择器，可以为节点数据集，可以为节点
+     *
+     * @desc 添加新的图片(可供外部调用)
+     *
+     * @example
+     * AW.lazyload.add(&#39;.lazy img&#39;);//选择器
+     * AW.lazyload.add([Nodelist]);//节点Nodelist（伪数组）
+     * AW.lazyload.add([Array]);//节点Array
+     * AW.lazyload.add(ImageElement);//图片节点
+     * AW.lazyload.add(OtherElement);//除图片外其它节点，找寻内部图片节点
+     * AW.lazyload.add(jQueryObject);//jQuery节点集（伪数组）
+     * AW.lazyload.add(ZeptoObject);//Zepto节点集（伪数组）
+     *
+     */
+    add: function (addStack)</pre><h3 id="示例代码">示例代码</h3><pre>    var opt = {
+        &quot;auto&quot;: true,                //是否自动加载标示位
+        &quot;offsetPre&quot;: 10,            //预加载偏移量，默认10，提升懒加载体验
+        &quot;lazyAttr&quot;: &#39;data-src&#39;        //获取延迟加载的图片地址，如data-src = &#39;http://www.alipay.com/logo.png&#39;
+    }
+    AW.lazyload.init(opt);            //执行lazyload</pre><h3 id="演示-可选">演示 可选</h3><h2 id="toast">toast</h2><pre>控制页面中提示窗的显示及设置参数
+
+</pre><h3 id="接口列表">接口列表</h3><pre>    /**
+     * 显示toast
+     *
+     * @memberof AW.loading
+     *
+     * @desc 外部调用
+     *
+     */
+    show: function (callback)
+
+    /**
+     * 隐藏toast
+     *
+     * @memberof AW.loading
+     *
+     * @desc 外部调用
+     *
+     */
+    hide: function ()
+
+    /**
+     * 确认按钮的回调函数
+     *
+     * @memberof AW.loading
+     *
+     * @type {Function}
+     */
+    success: function ()
+
+    /**
+     * 取消按钮的回调函数
+     *
+     * @memberof AW.loading
+     *
+     * @type {Function}
+     */
+    cancel: function ()</pre><h3 id="示例代码">示例代码</h3><pre>    /**
+     * 默认配置参数
+     *
+     * @memberof AW.loading
+     * @param {!Object} target - className，node对象
+     * @param {!String} message - 默认文案
+     * @param {String} type - 类型（success | error | loading）
+     * @param {Number} hideDelay - 延迟隐藏时间（毫秒）
+     * @param {Number} showDelay - 延迟显示时间（毫秒）
+     * @param {String} animate - 动画效果
+     * @param {Boolean} isWebview - 是否开启容器调用（开启后不在容器则不调用）
+     *
+     * @desc 默认配置参数
+     *
+     */
+
+    var opt = {
+        target: &#39;.J-am-toast&#39;,
+        message: &#39;这里是默认文案，请添加&#39;,
+        type: &#39;none&#39;,
+        hideDelay: &#39;2500&#39;,
+        showDelay: &#39;0&#39;,
+        animate: &#39;none&#39;,
+        isWebview: true
+    }
+
+    dialog(opt);    //开启窗口</pre><h3 id="演示-可选">演示 可选</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+ 
+    </div>
+</div>
+         <!--<div class="logo">-->
+          <!--&lt;!&ndash;<div class="logo-inner"></div>&ndash;&gt;-->
+        <!--</div>-->
+<div class="footer">
+    <div class="grid-990 sitelink fn-clear" coor="sitelink" role="contentinfo">
+        <ul class="ui-link fn-clear">
+            <!-- XT:支付宝首页/默认频道/支付宝新首页开始:www.alipay.com/i/indexb.vm -->
+            <li class="ui-link-item"><a href="http://ab.alipay.com/i/index.htm" target="_blank" title="关于支付宝"
+                                        seed="grid990-link" smartracker="on">关于支付宝</a></li>
+            <li class="ui-link-item"><a href="http://blog.alipay.com/" target="_blank" title="官方博客"
+                                        seed="grid990-linkT1" smartracker="on">官方博客</a></li>
+            <li class="ui-link-item"><a href="http://job.alipay.com/index.php" target="_blank" title="诚征英才"
+                                        seed="grid990-linkT2" smartracker="on">诚征英才</a></li>
+            <li class="ui-link-item"><a href="https://open.alipay.com/index.htm" target="_blank" title="开放平台"
+                                        seed="grid990-linkT3" smartracker="on">开放平台</a></li>
+            <li class="ui-link-item"><a href="http://ab.alipay.com/i/lianxi.htm" target="_blank" title="联系我们"
+                                        seed="grid990-linkT4" smartracker="on">联系我们</a></li>
+            <li class="ui-link-item"><a href="http://fun.alipay.com/sitemap/index.htm" target="_blank" title="网站地图"
+                                        seed="grid990-linkT5" smartracker="on">网站地图</a></li>
+            <li class="ui-link-item"><a href="http://global.alipay.com/ospay/home.htm" target="_blank"
+                                        title="International Business" seed="grid990-International-Business"
+                                        smartracker="on">International Business</a></li>
+            <li class="ui-link-item ui-link-item-last"><a href="http://ab.alipay.com/i/jieshao.htm#en" target="_blank"
+                                                          title="About Alipay" seed="grid990-About-Alipay"
+                                                          smartracker="on">About Alipay</a></li>
+            <!-- XT:支付宝首页/默认频道/支付宝新首页结束:www.alipay.com/i/indexb.vm -->        </ul>
+        <ul class="ui-link fn-clear">
+            <!-- XT:支付宝首页/默认频道/支付宝新首页开始:www.alipay.com/i/indexb.vm -->
+            <li class="ui-link-item"><a href="http://page.1688.com/shtml/about/ali_group1.shtml" target="_blank"
+                                        title="阿里巴巴集团" seed="grid990-linkT7" smartracker="on">阿里巴巴集团</a></li>
+            <li class="ui-link-item"><a href="http://www.alibaba.com/" target="_blank" title="阿里巴巴国际站"
+                                        seed="grid990-linkT8" smartracker="on">阿里巴巴国际站</a></li>
+            <li class="ui-link-item"><a href="http://www.1688.com/" target="_blank" title="阿里巴巴中国站"
+                                        seed="grid990-linkT9" smartracker="on">阿里巴巴中国站</a></li>
+            <li class="ui-link-item"><a href="http://www.aliexpress.com/" target="_blank" title="全球速卖通"
+                                        seed="grid990-linkT10" smartracker="on">全球速卖通</a></li>
+            <li class="ui-link-item"><a href="http://www.taobao.com/" target="_blank" title="淘宝网" seed="grid990-linkT11"
+                                        smartracker="on">淘宝网</a></li>
+            <li class="ui-link-item"><a href="http://www.tmall.com/" target="_blank" title="天猫" seed="grid990-linkT12"
+                                        smartracker="on">天猫</a></li>
+            <li class="ui-link-item"><a href="http://ju.taobao.com" target="_blank" title="聚划算" seed="grid990-linkT13"
+                                        smartracker="on">聚划算</a></li>
+            <li class="ui-link-item"><a href="http://www.etao.com/?tbpm=t" target="_blank" title="一淘"
+                                        seed="grid990-linkT14" smartracker="on">一淘</a></li>
+            <li class="ui-link-item"><a href="http://www.alimama.com/index.htm" target="_blank" title="阿里妈妈"
+                                        seed="grid990-linkT15" smartracker="on">阿里妈妈</a></li>
+            <li class="ui-link-item"><a href="http://trip.taobao.com/" target="_blank" title="淘宝旅行"
+                                        seed="grid990-linkT16" smartracker="on">淘宝旅行</a></li>
+            <li class="ui-link-item"><a href="http://www.xiami.com/" target="_blank" title="虾米" seed="grid990-linkT17"
+                                        smartracker="on">虾米</a></li>
+            <li class="ui-link-item"><a href="http://www.aliyun.com/" target="_blank" title="阿里云计算"
+                                        seed="grid990-linkT18" smartracker="on">阿里云计算</a></li>
+            <li class="ui-link-item"><a href="http://www.yunos.com/" target="_blank" title="云OS" seed="grid990-linkT19"
+                                        smartracker="on">云OS</a></li>
+            <li class="ui-link-item"><a href="http://www.net.cn/" target="_blank" title="万网" seed="grid990-linkT20"
+                                        smartracker="on">万网</a></li>
+            <li class="ui-link-item"><a href="https://www.alipay.com/" target="_blank" title="支付宝"
+                                        seed="grid990-linkT21" smartracker="on">支付宝</a></li>
+            <li class="ui-link-item ui-link-item-last"><a href="https://www.laiwang.com/" target="_blank" title="来往"
+                                                          seed="grid990-linkT22" smartracker="on">来往</a></li>
+            <!-- XT:支付宝首页/默认频道/支付宝新首页结束:www.alipay.com/i/indexb.vm -->        </ul>
+        <ul class="ui-link ui-link-bottom fn-clear">
+            <li class="ui-link-item ui-link-item-last">支付宝版权所有 2004-2014 <a
+                    href="http://fun.alipay.com/certificate/jyxkz.htm" target="_blank" seed="grid990-linkT6"
+                    smartracker="on">ICP证: 浙B2-20120045</a></li>
+        </ul>
+
+    </div>
+</div>
+</body>
+    <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="../static/global.js"></script>
+    <script>
+        seajs.config({
+            alias: {
+                "$": 'jquery/jquery/1.7.2/jquery'
+            }
+        });
+//        seajs.use(['arale/autocomplete/1.2.3/autocomplete','$'], function(AutoComplete,$) {
+//          $('.logo').click(function (e) {
+//              $('body,html').animate({
+//                scrollTop: 0
+//          }, 500);
+//            e.preventDefault();
+//          });
+//            new AutoComplete({
+//                trigger: '#search',
+//                filter:"stringMatch",
+//                dataSource: [
+//"../about/about.html","../amg/dev-guild.html","../amg/website-guild.html","../amj/about.html","../amj/aj-doc.html","../amt/about.html","../amui/about.html","../amui/amui-doc.html","about.html","aw-doc.html","../h5container/ab-doc.html","../h5container/about.html","../wiki/bookmark.html",
+//                ]
+//            }).render().on('itemSelect',function  (data) {
+//              window.location = data.matchKey;
+//            });
+//        });
+    </script>
+</html>
