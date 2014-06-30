@@ -5,26 +5,31 @@ define(function(require, exports, module) {
     //左侧菜单定位
         $(function(){
             //获取要定位元素距离浏览器顶部的距离
-            var navH = $("#sidebar-wrapper").offset().top;
-            //获取要定位元素在最底部时的offsetTop
-            var nav_maxBottom = $(".footer").offset().top - $("#sidebar-wrapper").outerHeight();
+            var navH = $(".header-nav").offset().top;
+            //获取要定位元素与边栏的相对距离
+			var sidebar_fixed_top = $(".header-nav").outerHeight() + parseInt($("#sidebar-wrapper").closest(".mar").css("marginTop"));
             //滚动条事件
             $(window).scroll(function(){
                 //获取滚动条的滑动距离
                 var scroH = $(this).scrollTop();
-                //滚动条的滑动距离大于等于定位元素距离浏览器顶部的距离，就固定，反之就不固定
+				//获取要定位元素在最底部时的offsetTop
+				var nav_maxBottom = $(".footer").offset().top - $("#sidebar-wrapper").outerHeight() - sidebar_fixed_top;
+				//滚动条的滑动距离大于等于定位元素距离浏览器顶部的距离，就固定，反之就不固定
                 if(scroH < navH){
-                    $("#sidebar-wrapper").removeClass('sidebar-fixed-top').removeAttr('style');
+                    $("#sidebar-wrapper").removeClass('sidebar-fixed-top').css({top: 'auto'});
+                    $(".navigation").removeClass('navigation-fix navigation-btm').css({top: 'auto'});
                 }
                 else if(scroH >= navH && scroH < nav_maxBottom){
-                    $("#sidebar-wrapper").removeAttr('style').addClass('sidebar-fixed-top');
+                    $("#sidebar-wrapper").addClass('sidebar-fixed-top').css({top: 'auto'});
+                    $(".navigation").addClass('navigation-fix').removeClass('navigation-btm').css({top: 0});
                 }
                 else{
-                    $("#sidebar-wrapper").removeClass('sidebar-fixed-top').offset({top: nav_maxBottom});
+                    $("#sidebar-wrapper").removeClass('sidebar-fixed-top').offset({top: nav_maxBottom + sidebar_fixed_top});
+                    $(".navigation").addClass('navigation-fix navigation-btm').offset({top: nav_maxBottom});
                 }
             })
         })
-
+    
   // var autoc = require('arale/autocomplete/1.2.3/autocomplete');
   // console.log(autoc);
   var contentNode=$('.document .entry-content');
@@ -76,9 +81,5 @@ define(function(require, exports, module) {
                     return false;
                 }
             });
-
         }
-
-
-
 });

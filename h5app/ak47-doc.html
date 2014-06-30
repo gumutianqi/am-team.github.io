@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="generator" content="nico 0.5.0">
     <meta name="theme" content="autumn 0.1">
-    <title>bookmark - 常用网址收藏 | AM - 无线前端Web开放解决方案</title>
+    <title>ak47 - alipay H5App developer kits | AM - 无线前端Web开放解决方案</title>
     <link rel="stylesheet" href="../static/1140.css" />
     <link rel="stylesheet" href="../static/wiki.css" />
     <link rel="stylesheet" href="../static/syntax.css" />
@@ -137,16 +137,16 @@
     
     <li>
         <a  archiveId = "H5APP"
-        href="../h5app/about.html">
+        href="about.html">
         H5APP </a>
         
         <ul class="nav-sub">
             <li>
-                <a href="../h5app/about.html">关于H5App</a>
+                <a href="about.html">关于H5App</a>
             </li>
             
             <li>
-                <a href="../h5app/ak47-doc.html">ak47</a>
+                <a href="ak47-doc.html">ak47</a>
             </li>
             
         </ul>
@@ -154,13 +154,13 @@
     </li>
     
     <li>
-        <a  class="active"  archiveId = "wiki"
+        <a  archiveId = "wiki"
         href="../">
         知识库 </a>
         
         <ul class="nav-sub">
             <li>
-                <a href="bookmark.html">收藏阁</a>
+                <a href="../wiki/bookmark.html">收藏阁</a>
             </li>
             
         </ul>
@@ -183,42 +183,99 @@
     <div class="ninecol content">
         <div class="document">
             <div class="post-header">
-                <h2 class="document-title">bookmark - 常用网址收藏</h2>
+                <h2 class="document-title">ak47 - alipay H5App developer kits</h2>
 
                 <div class="post-meta">
                     <!--<span></span> /-->
-                    <time datetime="2014-06-20">2014-06-20</time>
+                    <time datetime="2014-06-25">2014-06-25</time>
                 </div>
             </div>
             <div class="entry-content">
-                <p>常用网址列表</p>
-<h2 id="信息类">信息类</h2><ul>
-<li><a href="http://caniuse.com">html5 浏览器兼容性查询</a> -</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects">浏览器内建对象文档</a></li>
-<li><a href="http://kangax.github.io/compat-table/es5/">es5规范浏览器兼容性表格</a></li>
-<li><a href="http://kangax.github.io/compat-table/es6/">es6规范浏览器兼容性表格</a></li>
-<li><a href="http://www.stackoverflow.com">stackoverflow 最靠谱的问题解决方案</a></li>
-<li><a href="http://github.com">github 开源代码网站 全球最大规模的代码库</a></li>
-<li><a href="http://www.commonjs.org/">commonjs规范</a></li>
-<li><a href="http://javascript.ruanyifeng.com/">javascript教程</a></li>
-<li><a href="http://www.nodejs.com">nodejs</a></li>
-</ul>
-<h2 id="功能类">功能类</h2><ul>
-<li><a href="http://tool.css-js.com/base64.html">在线图片转base64</a></li>
-<li><a href="http://maolihui.com/goagent-detail.html">GoAgent 访问google的利器</a></li>
-</ul>
-<h2 id="类库-框架类">类库/框架类</h2><ul>
-<li><a href="http://jquery.com">jquery</a></li>
-<li><a href="http://underscorejs.org/">underscore</a></li>
-<li><a href="https://angularjs.org/">angularjs</a></li>
-<li><a href="http://mustache.github.io/">mustache模板</a></li>
-</ul>
-<h2 id="性能类">性能类</h2><ul>
-<li><a href="http://www.webperformancetoday.com/tag/mobile-web-performance/">移动WEB性能</a></li>
-<li><a href="https://developers.google.com/speed/docs/best-practices/caching">优化WEB缓存</a></li>
-<li><a href="https://developers.google.com/speed/docs/best-practices/rendering">优化浏览器渲染</a></li>
-</ul>
+                <h2 id="说明">说明</h2><p>ak47是支付宝离线h5app开发的一套工具集，它将整个h5app开发周期中各个环节用到的实用工具集成在一起</p>
+<p>使用该工具集能大大提升h5app开发效率</p>
+<h2 id="安装">安装</h2><h3 id="升级nodejs">升级Nodejs</h3><p><strong>已知在osx 10.9下，node@0.10.22以下版本运行gulp watch功能会报错，请升级最新版node:</strong></p>
+<pre>$ sudo npm cache clean –f
+$ sudo npm install -g n
+$ sudo n stable</pre><h3 id="安装ak47">安装ak47</h3><pre>$ npm install ak47 -g</pre><p>有时候会由于GFW的原因导致报错<code>npm ERR! registry error parsing json</code>，这时候请先使用</p>
+<pre>npm config set registry http://registry.cnpmjs.org</pre><p>还有问题的话请google解决办法，GFW你懂的。。</p>
+<h2 id="初始化一个新h5app项目">初始化一个新H5App项目</h2><h3 id="启动方式：ak47-init">启动方式：<code>ak47 init</code></h3><pre>$ mkdir h5app-demo
+$ cd h5app-demo
+$ ak47 init
 
+//开始输入初始化项目参数
+
+appid: 20000123                         //应用ID
+name:(H5App) demo                       //应用名称
+version:(1.0.0.0)                       //应用版本号
+url:(/www/index.htm)                    //应用启动页
+descriptor: test ak47                   //应用简介
+
+# H5App init success!</pre><p>输入时可直接回车，将会以括号内的值作为默认值。<br/>
+通过初始化的项目参数将会在项目根目录自动生成一个Manifest.xml文件，后续可手工修改内容。</p>
+<p>www目录下将自动生成一个demo项目，可直接删除或稍作参考。</p>
+<h3 id="使用一个现有h5app项目">使用一个现有H5App项目</h3><p>假设有一个H5App标准项目，路径为
+<code>/Users/haibinzhb/Project/alipayProject/h5app-demo</code></p>
+<p>那么直接cd到项目根目录</p>
+<pre>cd /Users/haibinzhb/Project/alipayProject/h5app-demo</pre><h2 id="开启本地静态http服务器">开启本地静态HTTP服务器</h2><h3 id="启动方式：ak47-server">启动方式：<code>ak47 server</code></h3><p>支持通过 --p 参数来自定义HTTP虚拟服务器端口号，默认为3000
+支持通过 --watch 参数打开watch功能</p>
+<pre>$ ak47 server --watch --p 3001
+
+# project = /Users/haibinzhb/Project/alipayProject/h5app-demo
+# webServer(web页面预览地址) = http://10.15.133.180:3001/
+# qrScheme(二维码服务) = http://10.15.133.180:3001/qr
+# listening... do not exit!</pre><p>执行后将打印出三个结果:</p>
+<ol>
+<li><p><code>project</code>为当前项目绝对路径。</p>
+</li>
+<li><p><code>webServer</code>为本地web服务器地址。</p>
+</li>
+<li><p><code>qrScheme</code>为二维码拍码地址，PC端打开后出现两个二维码，分别可以在移动端拍码后用原生浏览器或支付宝钱包打开。</p>
+</li>
+</ol>
+<p>默认启动页为自动获取自Manifest.xml文件内的url值，一般为index.htm。同时还会获取showTitleBar和showToolBar的值作为启动参数。</p>
+<p><strong>同时可通过--watch参数启用watch功能，PC端编辑静态资源文件(<em>.htm、</em>.html、<em>.css、</em>.js)并保存后，调试页会自动刷新。</strong></p>
+<h2 id="开启远程调试控制台-改造自weinre">开启远程调试控制台(改造自weinre)</h2><h3 id="启动方式-ak47-debug">启动方式: <code>ak47 debug</code></h3><p>支持通过 --p 参数来自定义HTTP虚拟服务器端口号，默认为3000
+支持通过 --watch 参数打开watch功能</p>
+<p>集成weinre功能，原理可参考<a href="http://people.apache.org/~pmuellr/weinre/docs/latest/Home.html">传送门</a>，ak47的weinre默认端口号为3119，可使用weinre的原生参数 --httpPort自定义。</p>
+<p>开启远程调试控制台功能后，同时会开启本地静态HTTP服务器。并且url地址将自动识别为当前局域网的IP地址。</p>
+<h4 id="请保持移动端设备和pc的网络处于同一环境下">请保持移动端设备和PC的网络处于同一环境下</h4><pre>$ ak47 debug --watch --p 3001
+
+# project = /Users/haibinzhb/Project/alipayProject/h5app-demo
+
+# debugPath(远程调试控制台地址) = http://10.15.133.180:3001/debug
+# webServer(web页面预览地址) = http://10.15.133.180:3001/
+# qrScheme(二维码服务) = http://10.15.133.180:3001/qr
+# debugScript(非本地页面需手动插入脚本) = &lt;script src=&quot;http://10.15.134.119:3119/target/target-script-min.js#anonymous&quot;&gt;&lt;/script&gt;
+
+# listening... do not exit!</pre><h3 id="调试教程">调试教程</h3><p><strong>如果是调试ak47搭建的本地站点，ak47将会自动为所有被访问的.htm或.html后缀的页面内嵌入远程调试代码，开发者无需手动加入。</strong></p>
+<p><strong>如果是需要调试在线网站(即非本地服务器网址)的页面，需要手动在被调试页面源码内加入debugScript的内容(即一个script标签)</strong></p>
+<p><strong>同时可通过--watch参数启用watch功能，PC端编辑静态资源文件(<em>.htm、</em>.html、<em>.css、</em>.js)并保存后，调试页会自动刷新。</strong></p>
+<ol>
+<li>PC端浏览器打开<code>debugPath</code>地址</li>
+<li>debugPath地址会出现两个二维码，分别可以在移动端拍码后用原生浏览器或支付宝钱包打开。</li>
+</ol>
+<p>默认启动页为自动获取自Manifest.xml文件内的url值，一般为index.htm。同时还会获取showTitleBar和showToolBar的值作为启动参数。</p>
+<p>qrScheme地址为专门的扫码地址</p>
+<p>weinre的调试界面完全类似chrome的调试台</p>
+<h4 id="注：如果出现远程调试无反应的情况，一般是由于连接超时或断开，请重新刷新手机端页面或远程控制台页面即可。">注：如果出现远程调试无反应的情况，一般是由于连接超时或断开，请重新刷新手机端页面或远程控制台页面即可。</h4><h3 id="后续计划">后续计划</h3><ol>
+<li>服务端数据mock功能</li>
+<li>客户端bridge接口mock功能</li>
+</ol>
+<h2 id="离线项目打包">离线项目打包</h2><h3 id="启动方式-ak47-pkg">启动方式: <code>ak47 pkg</code></h3><p>支持两种命令<code>ak47 pkg</code>或<code>ak47 package</code>
+执行后会提示当前版本号并允许输入新版本号，可直接回车跳过；或输入新版本号，将自动更新Manifest.xml内的版本号。
+还能通过输入environ参数来增加amr包的运行环境标识，默认为dev</p>
+<p>打包工具将会自动获取Manifest.xml文件内的appid和版本号来生成amr包文件名</p>
+<pre>$ ak47 pkg
+
+version:(1.0.0.0) 1.1.0.0
+environ:(dev) rc
+
+# archiving...
+# packed at /Users/haibinzhb/Project/alipayProject/h5app-demo/package/20000127-1.1.0.0_rc.amr</pre><h3 id="后续计划">后续计划</h3><ol>
+<li>自动压缩js和css文件</li>
+<li>优化加签验签逻辑，不再强绑定为支付宝H5App签名功能，实现一个包可以同时用于其他无线端产品线</li>
+</ol>
+<h2 id="其他功能功能开发中">其他功能功能开发中</h2><pre>$ ak47 publish    //发布到指定环境</pre>
             </div>
         </div>
     </div>
@@ -316,7 +373,7 @@
 //                trigger: '#search',
 //                filter:"stringMatch",
 //                dataSource: [
-//"../about/about.html","../amg/dev-exp-doc.html","../amg/dev-guild.html","../amg/mobile-platform-grade.html","../amg/website-guild.html","../amj/about.html","../amj/aj-doc.html","../amt/about.html","../amui/about.html","../amui/amui-doc.html","../amw/about.html","../amw/aw-doc.html","../h5app/about.html","../h5app/ak47-doc.html","../h5container/ab-doc.html","../h5container/about.html","bookmark.html",
+//"../about/about.html","../amg/dev-exp-doc.html","../amg/dev-guild.html","../amg/mobile-platform-grade.html","../amg/website-guild.html","../amj/about.html","../amj/aj-doc.html","../amt/about.html","../amui/about.html","../amui/amui-doc.html","../amw/about.html","../amw/aw-doc.html","about.html","ak47-doc.html","../h5container/ab-doc.html","../h5container/about.html","../wiki/bookmark.html",
 //                ]
 //            }).render().on('itemSelect',function  (data) {
 //              window.location = data.matchKey;

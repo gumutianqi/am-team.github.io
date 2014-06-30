@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="generator" content="nico 0.5.0">
     <meta name="theme" content="autumn 0.1">
-    <title>移动Web开发指南 | AM - 无线前端Web开放解决方案</title>
+    <title>移动Web开发规范指南 | AM - 无线前端Web开放解决方案</title>
     <link rel="stylesheet" href="../static/1140.css" />
     <link rel="stylesheet" href="../static/wiki.css" />
     <link rel="stylesheet" href="../static/syntax.css" />
@@ -15,7 +15,7 @@
     <div class="main">
         <div class="header">
             <div class="slogan row">
-                <a href="../index.html"><img src="https://i.alipayobjects.com/i/ecmng/png/201406/2m8Ebk4eZh.png" class="slogan-logo" alt="alipay"/></a>
+                <a href="../default.html"><img src="https://i.alipayobjects.com/i/ecmng/png/201406/2m8Ebk4eZh.png" class="slogan-logo" alt="alipay"/></a>
                 <span>无线Web开放解决方案</span>
         <span class="search">
            <!--<input type="text" id="search" placeholder="搜点东西...">-->
@@ -35,12 +35,20 @@
     
     <li>
         <a  class="active"  archiveId = "amg"
-        href="../">
-        移动开发指南 </a>
+        href="dev-guild.html">
+        开发指南 </a>
         
         <ul class="nav-sub">
             <li>
-                <a href="dev-guild.html">移动开发指南</a>
+                <a href="dev-guild.html">移动开发规范指南</a>
+            </li>
+            
+            <li>
+                <a href="mobile-platform-grade.html">移动Web平台分级标准</a>
+            </li>
+            
+            <li>
+                <a href="dev-exp-doc.html">移动开发经验谈</a>
             </li>
             
             <li>
@@ -128,6 +136,24 @@
     </li>
     
     <li>
+        <a  archiveId = "H5APP"
+        href="../h5app/about.html">
+        H5APP </a>
+        
+        <ul class="nav-sub">
+            <li>
+                <a href="../h5app/about.html">关于H5App</a>
+            </li>
+            
+            <li>
+                <a href="../h5app/ak47-doc.html">ak47</a>
+            </li>
+            
+        </ul>
+        
+    </li>
+    
+    <li>
         <a  archiveId = "wiki"
         href="../">
         知识库 </a>
@@ -157,7 +183,7 @@
     <div class="ninecol content">
         <div class="document">
             <div class="post-header">
-                <h2 class="document-title">移动Web开发指南</h2>
+                <h2 class="document-title">移动Web开发规范指南</h2>
 
                 <div class="post-meta">
                     <!--<span>轩与</span> /-->
@@ -182,8 +208,8 @@
 <li>html页面中的标签结构平坦化</li>
 <li>图片采用懒加载的方式 - 推荐使用懒加载组件来实现</li>
 <li>对于icon类<code>简单</code>小图标采用css3&gt;iconfont/base64/sprite图片的优先级考虑使用.</li>
-<li>移动性能 手机上的性能问题，主要集中在repaint和reflow上，因此脚本在处理的时候，需要特别注意</li>
-<li>网络环境 在手机开发web的时候，需要特别注意的就是弱网络环境（2G/2.5G或者在信号不稳定）的问题</li>
+<li>移动性能 手机上的性能问题，主要集中在repaint和reflow上，因此脚本在处理的时候，需要注意其相关内容</li>
+<li>网络环境 在移动端开发web的时候，需要特别注意的就是弱网络环境（2G/2.5G或者在信号不稳定）的问题</li>
 </ul>
 <h2 id="ui组件指南">UI组件指南</h2><h3 id="通用指南">通用指南</h3><ul>
 <li>对于组件的使用，建议使用如下优先考虑<ol>
@@ -468,7 +494,7 @@ flex有各种版本以及操作系统的兼容性问题，详细文档参考：<
 //                trigger: '#search',
 //                filter:"stringMatch",
 //                dataSource: [
-//"../about/about.html","dev-guild.html","website-guild.html","../amj/about.html","../amj/aj-doc.html","../amt/about.html","../amui/about.html","../amui/amui-doc.html","../amw/about.html","../amw/aw-doc.html","../h5container/ab-doc.html","../h5container/about.html","../wiki/bookmark.html",
+//"../about/about.html","dev-exp-doc.html","dev-guild.html","mobile-platform-grade.html","website-guild.html","../amj/about.html","../amj/aj-doc.html","../amt/about.html","../amui/about.html","../amui/amui-doc.html","../amw/about.html","../amw/aw-doc.html","../h5app/about.html","../h5app/ak47-doc.html","../h5container/ab-doc.html","../h5container/about.html","../wiki/bookmark.html",
 //                ]
 //            }).render().on('itemSelect',function  (data) {
 //              window.location = data.matchKey;
