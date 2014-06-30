@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.5.0">
+    <meta name="generator" content="nico 0.5.1">
     <meta name="theme" content="autumn 0.1">
     <title>ab - alipay container bridge kit | AM - 移动Web开放解决方案</title>
     <link rel="stylesheet" href="../static/1140.css" />
@@ -179,6 +179,7 @@
         </ul>
     </div>
     
+
  
     <div class="ninecol content">
         <div class="document">
@@ -192,21 +193,32 @@
             </div>
             <div class="entry-content">
                 <p>支持支付宝容器的bridge接口控件</p>
-<p>提供了针对AliBridge的通用调用接口和全局绑定事件，调用方无需关注接口实现细节，</p>
+<p>提供了针对Alipay JSAPI的通用调用接口和全局绑定事件，调用方无需关注接口实现细节</p>
 <h2 id="接口列表">接口列表</h2><pre>    /**
+     *
      * 通用接口，调用方式等同AlipayJSBridge.call
      * 无需考虑接口的执行上下文，必定调用成功
-     * @param name 接口名
-     * @param param 接口参数
-     * @fn 接口回调函数
+     * @param {String} name 接口名
+     * @param {object} param 接口参数
+     * @fn {function} fn 回调函数
      */
-    AliBridge.call = function (name,param,fn)</pre><h2 id="示例代码">示例代码</h2><pre>    AB.call(&quot;toast&quot;,param,fn);</pre>
+    AliBridge.call = function (name,param,fn)
+
+    /**
+     * 监听H5容器事件
+     * @param {string} event 事件名称
+     * @param {function} fn 回调函数
+     *
+     */
+    AliBridge.on = function (event, fn)</pre><h2 id="示例代码">示例代码</h2><pre>    AB.call(&quot;toast&quot;,{content:&quot;简易提示&quot;},function(){});</pre>
             </div>
         </div>
     </div>
 </div>
 
+
  
+
  
     </div>
 </div>
