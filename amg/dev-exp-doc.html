@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.5.0">
+    <meta name="generator" content="nico 0.5.1">
     <meta name="theme" content="autumn 0.1">
     <title>无线Web开发经验谈 | AM - 移动Web开放解决方案</title>
     <link rel="stylesheet" href="../static/1140.css" />
@@ -11,15 +11,23 @@
     <link rel="stylesheet" href="../static/syntax.css" />
   </head>
 <body>
+<div class="goTop">
+    <span>Go TOP</span>
+</div>
 <div class="wrap">
     <div class="main">
         <div class="header">
             <div class="slogan row">
                 <a href="../default.html"><img src="https://i.alipayobjects.com/i/ecmng/png/201406/2m8Ebk4eZh.png" class="slogan-logo" alt="alipay"/></a>
                 <span>移动Web解决方案</span>
-        <span class="search">
-           <!--<input type="text" id="search" placeholder="搜点东西...">-->
-        </span>
+                <span class="search">
+                   <!--<input type="text" id="search" placeholder="搜点东西...">-->
+                </span>
+                <button type="button" class="navbar-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
             </div>
             <div class="header-nav">
@@ -128,7 +136,7 @@
             </li>
             
             <li>
-                <a href="../h5container/public-home-api.html">容器API文档</a>
+                <a href="../h5container/jsapi-doc.html">容器API文档</a>
             </li>
             
         </ul>
@@ -369,21 +377,25 @@ IOS和Android在HTML5标签上最大的区别莫过于input类型的标签，并
 </li>
 </ol>
 <p>综上所述，在手机web上使用动画的时候，需要谨慎。</p>
-<h2 id="javascript">Javascript</h2><h3 id="es5标准">ES5标准</h3><p>智能手机对js的支持比较好，对于es5的规范支持的比较好，不过还是考虑到版本兼容性问题，以下列出一些在实践中检验通过的一些方法：
-<em> JSON对象 JSON对象可以说是最频繁使用的一个对象，在PC时代，由于浏览器兼容性问题，常常会引用老道写的一个JOSN类库，不过在webkit的时代，除了ios3.1之外，其他版本系统都已经支持了JSON对象，ios3.1，估计只有非常小的市场，因此可以考虑忽略。因此JSON原生对象，可以直接拿来使用，在手机上。
-</em> Array的一些方法 比如forEach，indexof，every，reduce等，都可以在手机web的开发中安全的使用
-<em> Object对象 由于Object的es5对象方法使用的比较少，没有太多的兼容性的反馈，建议大家谨慎使用
-</em> Date now是一个新方法，不过不是所有的系统版本都支持,建议谨慎使用，可以使用getTime来替代，实现的代码量很少</p>
+<h2 id="javascript">Javascript</h2><h3 id="es5标准">ES5标准</h3><p>智能手机对js的支持比较好，对于es5的规范支持的比较好，不过还是考虑到版本兼容性问题，以下列出一些在实践中检验通过的一些方法：</p>
+<ul>
+<li>JSON对象 JSON对象可以说是最频繁使用的一个对象，在PC时代，由于浏览器兼容性问题，常常会引用老道写的一个JOSN类库，不过在webkit的时代，除了ios3.1之外，其他版本系统都已经支持了JSON对象，ios3.1，估计只有非常小的市场，因此可以考虑忽略。因此JSON原生对象，可以直接拿来使用，在手机上。</li>
+<li>Array的一些方法 比如forEach，indexof，every，reduce等，都可以在手机web的开发中安全的使用</li>
+<li>Object对象 由于Object的es5对象方法使用的比较少，没有太多的兼容性的反馈，建议大家谨慎使用</li>
+<li>Date now是一个新方法，不过不是所有的系统版本都支持,建议谨慎使用，可以使用getTime来替代，实现的代码量很少</li>
+</ul>
 <h3 id="dom选择器">DOM选择器</h3><p>html5为了我们提供了一个非常好的DOM选择器，就是document.querySelector和document.querySelectorAll这两个方法，这两个方法在android2.1+以及ios3+以后，都可以使用，其接受的参数为css选择器。在实际web开发中，有一部大部分工作会用到DOM的操作，通过这个神器，可以解决大多数的DOM的操作。建议大家使用的时候，可以多多使用这两个方法。</p>
 <p>其他的DOM的选择器的兼容性并不是太好，建议不要使用。</p>
 <h3 id="zepto">Zepto</h3><p>对于jquery大家应该会非常的熟悉，在web手机上也有一个轻量级的类库工具，那就是Zepto，它的很多api接口保持和jquery的接口兼容，其体积非常小，gzip的包在10k左右，非常适合在手机上的无线环境中加载。建议大家在使用类库的时候，推荐使用，其api地址为:<a href="http://zeptojs.com/">http://zeptojs.com/</a></p>
 <h3 id="click的300ms延迟响应">click的300ms延迟响应</h3><p>说到移动开发，不得不说一下这个click事件，在手机上被叫的最多的就是点击的反应慢，就是click惹出来的事情。情况是在这样，在手机早起，浏览器有系统级的放大和缩小的功能，用户在屏幕上点击两次之后，系统会触发站点的放大/缩小功能。不过由于系统需要判断用户在点击之后，有没有接下来的第二次点击，因此在用户点击第一次的时候，会强制等待300ms，等待用户在这个时间内，是否有用户第二次的提交，如果没有的话，就会click的事件，否则就会触发放大/缩小的效果。</p>
 <p>这个设计本来没有问题，但是在绝大多数的手机操作中，用户的单击事件的概率大大大于双击的，因此所有用户的点击都必须要等300ms，才能触发click事件，造成给用户给反应迟钝的反应，这个难以解决。业界普遍解决的方案是自己通过touch的事件完成tap，替代click。不过tap事件来实际的应用中存在下面所说的问题。</p>
 <p>不过有个好消息，就是手机版chrome21.0之后，对于viewport width=device-width，并且禁止缩放的设置，click点击将取消300ms的强制等待时间，这个会是web的响应时间大大提升。ios至今还没有此类消息。不过这个还需要有一段时间。</p>
-<h3 id="移动事件">移动事件</h3><p>javascript有很多用户交互相关事件，在移动上有一些比较特有的事件，大家在日常开发中，可能会接触到，这些事件的特性，这里说一下：
-<em> orientationchange 这个事件是在当设备发生旋转的时候，发生的事件。这个在某些场合会非常的实用。
-</em> touchstart、touchmove、touchend、touchcancel等四个触摸事件，在所有移动web的中，都支持这四个事件。通过这两个事件，可以模拟出各种用户的手势，不过由于其处理比较复杂，可能模拟最多的是tap事件。很多web移动类库，都有tap的事件的实现，不过从实践中，tap都不是处理的很好，tap的主要问题，有两个，一个是tap和滚动同时触发的时候，往往会触发tap事件，二是tap的敏感度，经常会失误触发tap。
-* scroll事件 这个事件在PC上的触发时机和手机上的触发时机不同，scroll事件在手机上，只有在滚动停止的时候才会发生,因此这个事件在移动端用的比较少，因为触发的时机已经晚了。对于需要在移动中，改变页面结构的功能，用scroll是无法完成的。</p>
+<h3 id="移动事件">移动事件</h3><p>javascript有很多用户交互相关事件，在移动上有一些比较特有的事件，大家在日常开发中，可能会接触到，这些事件的特性，这里说一下：</p>
+<ul>
+<li>orientationchange 这个事件是在当设备发生旋转的时候，发生的事件。这个在某些场合会非常的实用。</li>
+<li>touchstart、touchmove、touchend、touchcancel等四个触摸事件，在所有移动web的中，都支持这四个事件。通过这两个事件，可以模拟出各种用户的手势，不过由于其处理比较复杂，可能模拟最多的是tap事件。很多web移动类库，都有tap的事件的实现，不过从实践中，tap都不是处理的很好，tap的主要问题，有两个，一个是tap和滚动同时触发的时候，往往会触发tap事件，二是tap的敏感度，经常会失误触发tap。</li>
+<li>scroll事件 这个事件在PC上的触发时机和手机上的触发时机不同，scroll事件在手机上，只有在滚动停止的时候才会发生,因此这个事件在移动端用的比较少，因为触发的时机已经晚了。对于需要在移动中，改变页面结构的功能，用scroll是无法完成的。</li>
+</ul>
 
             </div>
         </div>
@@ -482,7 +494,7 @@ IOS和Android在HTML5标签上最大的区别莫过于input类型的标签，并
 //                trigger: '#search',
 //                filter:"stringMatch",
 //                dataSource: [
-//"../about/about.html","dev-exp-doc.html","dev-guild.html","mobile-platform-grade.html","website-guild.html","../amj/about.html","../amj/aj-doc.html","../amt/about.html","../amui/about.html","../amui/amui-doc.html","../amw/about.html","../amw/aw-doc.html","../h5app/about.html","../h5app/ak47-doc.html","../h5container/ab-doc.html","../h5container/about.html","../wiki/bookmark.html",
+//"../about/about.html","dev-exp-doc.html","dev-guild.html","mobile-platform-grade.html","website-guild.html","../amj/about.html","../amj/aj-doc.html","../amt/about.html","../amui/about.html","../amui/amui-doc.html","../amw/about.html","../amw/aw-doc.html","../h5app/about.html","../h5app/ak47-doc.html","../h5container/ab-doc.html","../h5container/about.html","../h5container/jsapi-doc.html","../wiki/bookmark.html",
 //                ]
 //            }).render().on('itemSelect',function  (data) {
 //              window.location = data.matchKey;

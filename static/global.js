@@ -1,9 +1,26 @@
 define(function(require, exports, module) {
   var $ = require('gallery/jquery/1.8.2/jquery');
   $('.entry-content a').attr('target','_blank');
+    function whiteBtm () {
+        if($(".content").hasClass("ninecol") && $(window).width() > 640){
+            var elH = $(".entry-content ul:last").outerHeight(true) + $(".entry-content ul:last").prev().outerHeight(true);
+            var ftH = $(".footer").outerHeight(true);
+            var hdH = $(".header-nav").outerHeight(true);
+            var wdH = $(window).height();
+            var whiteSpace = wdH - hdH - ftH - elH;
 
+            $(".content").css({marginBottom: whiteSpace + "px"});       //底栏补白                
+        }
+        else{
+            $(".content").css({marginBottom: "30px"});       //底栏补白
+        }
+    }
     //左侧菜单定位
         $(function(){
+            whiteBtm();
+            $(window).resize(function () {
+                whiteBtm();
+            })
             //获取要定位元素距离浏览器顶部的距离
             var navH = $(".header-nav").offset().top;
             //获取要定位元素与边栏的相对距离
@@ -82,4 +99,14 @@ define(function(require, exports, module) {
                 }
             });
         }
+        $(".navbar-toggle").click(function () {             //显示隐藏菜单
+            $(".header-nav").slideToggle(800);
+        });
+        $(".goTop").click(function () {                     //滚动到顶
+            $("body").animate({scrollTop: '0px'}, 800);
+        });
+        $("#sidebar-fixed-nav a").click(function () {       //动画滚动到指定项
+            $("body").animate({scrollTop: $($(this).attr("href")).offset().top - 57}, 800);
+            return false;
+        })
 });
