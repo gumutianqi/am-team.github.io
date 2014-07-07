@@ -1,15 +1,15 @@
 <!DOCTYPE HTML>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta name="generator" content="nico 0.5.1">
     <meta name="theme" content="autumn 0.1">
     <title>无线Web开发经验谈 | AM - 移动Web开放解决方案</title>
-    <link rel="stylesheet" href="../static/1140.css" />
-    <link rel="stylesheet" href="../static/wiki.css" />
-    <link rel="stylesheet" href="../static/syntax.css" />
-  </head>
+    <link rel="stylesheet" href="../static/1140.css"/>
+    <link rel="stylesheet" href="../static/wiki.css"/>
+    <link rel="stylesheet" href="../static/syntax.css"/>
+</head>
 <body>
 <div class="goTop">
     <span>Go TOP</span>
@@ -18,7 +18,8 @@
     <div class="main">
         <div class="header">
             <div class="slogan row">
-                <a href="../default.html"><img src="https://i.alipayobjects.com/i/ecmng/png/201406/2m8Ebk4eZh.png" class="slogan-logo" alt="alipay"/></a>
+                <a href="../default.html"><img src="https://i.alipayobjects.com/i/ecmng/png/201406/2m8Ebk4eZh.png"
+                                               class="slogan-logo" alt="alipay"/></a>
                 <span>移动Web解决方案</span>
                 <span class="search">
                    <!--<input type="text" id="search" placeholder="搜点东西...">-->
@@ -63,6 +64,10 @@
                 <a href="website-guild.html">移动建站指南</a>
             </li>
             
+            <li>
+                <a href="https://github.com/am-team/amDoc/../">Github</a>
+            </li>
+            
         </ul>
         
     </li>
@@ -78,7 +83,11 @@
             </li>
             
             <li>
-                <a href="../amui/amui-doc.html">API文档</a>
+                <a href="../amui/amui-doc.html">接口文档</a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/am-team/amUI/../">Github</a>
             </li>
             
         </ul>
@@ -99,6 +108,10 @@
                 <a href="../amj/aj-doc.html">接口文档</a>
             </li>
             
+            <li>
+                <a href="https://github.com/am-team/amJS/../">Github</a>
+            </li>
+            
         </ul>
         
     </li>
@@ -115,6 +128,10 @@
             
             <li>
                 <a href="../amw/aw-doc.html">接口文档</a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/am-team/amWidget/../">Github</a>
             </li>
             
         </ul>
@@ -136,7 +153,7 @@
             </li>
             
             <li>
-                <a href="../h5container/jsapi-doc.html">容器API文档</a>
+                <a href="../h5container/jsapi-doc.html">JSAPI 接口文档</a>
             </li>
             
         </ul>
@@ -183,8 +200,6 @@
         
 <div class="row mar">
     <div class="threecol meta">
-        <ul class="sub-nav">
-        </ul>
     </div>
     
  
@@ -387,7 +402,7 @@ IOS和Android在HTML5标签上最大的区别莫过于input类型的标签，并
 <h3 id="dom选择器">DOM选择器</h3><p>html5为了我们提供了一个非常好的DOM选择器，就是document.querySelector和document.querySelectorAll这两个方法，这两个方法在android2.1+以及ios3+以后，都可以使用，其接受的参数为css选择器。在实际web开发中，有一部大部分工作会用到DOM的操作，通过这个神器，可以解决大多数的DOM的操作。建议大家使用的时候，可以多多使用这两个方法。</p>
 <p>其他的DOM的选择器的兼容性并不是太好，建议不要使用。</p>
 <h3 id="zepto">Zepto</h3><p>对于jquery大家应该会非常的熟悉，在web手机上也有一个轻量级的类库工具，那就是Zepto，它的很多api接口保持和jquery的接口兼容，其体积非常小，gzip的包在10k左右，非常适合在手机上的无线环境中加载。建议大家在使用类库的时候，推荐使用，其api地址为:<a href="http://zeptojs.com/">http://zeptojs.com/</a></p>
-<h3 id="click的300ms延迟响应">click的300ms延迟响应</h3><p>说到移动开发，不得不说一下这个click事件，在手机上被叫的最多的就是点击的反应慢，就是click惹出来的事情。情况是在这样，在手机早起，浏览器有系统级的放大和缩小的功能，用户在屏幕上点击两次之后，系统会触发站点的放大/缩小功能。不过由于系统需要判断用户在点击之后，有没有接下来的第二次点击，因此在用户点击第一次的时候，会强制等待300ms，等待用户在这个时间内，是否有用户第二次的提交，如果没有的话，就会click的事件，否则就会触发放大/缩小的效果。</p>
+<h3 id="click的300ms延迟响应">click的300ms延迟响应</h3><p>说到移动开发，不得不说一下这个click事件，在手机上被叫的最多的就是点击的反应慢，就是click惹出来的事情。情况是在这样，在手机早期，浏览器有系统级的放大和缩小的功能，用户在屏幕上点击两次之后，系统会触发站点的放大/缩小功能。不过由于系统需要判断用户在点击之后，有没有接下来的第二次点击，因此在用户点击第一次的时候，会强制等待300ms，等待用户在这个时间内，是否有用户第二次的提交，如果没有的话，就会click的事件，否则就会触发放大/缩小的效果。</p>
 <p>这个设计本来没有问题，但是在绝大多数的手机操作中，用户的单击事件的概率大大大于双击的，因此所有用户的点击都必须要等300ms，才能触发click事件，造成给用户给反应迟钝的反应，这个难以解决。业界普遍解决的方案是自己通过touch的事件完成tap，替代click。不过tap事件来实际的应用中存在下面所说的问题。</p>
 <p>不过有个好消息，就是手机版chrome21.0之后，对于viewport width=device-width，并且禁止缩放的设置，click点击将取消300ms的强制等待时间，这个会是web的响应时间大大提升。ios至今还没有此类消息。不过这个还需要有一段时间。</p>
 <h3 id="移动事件">移动事件</h3><p>javascript有很多用户交互相关事件，在移动上有一些比较特有的事件，大家在日常开发中，可能会接触到，这些事件的特性，这里说一下：</p>
@@ -406,9 +421,9 @@ IOS和Android在HTML5标签上最大的区别莫过于input类型的标签，并
  
     </div>
 </div>
-         <!--<div class="logo">-->
-          <!--&lt;!&ndash;<div class="logo-inner"></div>&ndash;&gt;-->
-        <!--</div>-->
+<!--<div class="logo">-->
+<!--&lt;!&ndash;<div class="logo-inner"></div>&ndash;&gt;-->
+<!--</div>-->
 <div class="footer">
     <div class="grid-990 sitelink fn-clear" coor="sitelink" role="contentinfo">
         <ul class="ui-link fn-clear">
@@ -476,29 +491,42 @@ IOS和Android在HTML5标签上最大的区别莫过于input类型的标签，并
     </div>
 </div>
 </body>
-    <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="../static/global.js"></script>
-    <script>
-        seajs.config({
-            alias: {
-                "$": 'jquery/jquery/1.7.2/jquery'
+<script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="../static/global.js"></script>
+<script>
+    seajs.config({
+        alias: {
+            "$": 'jquery/jquery/1.7.2/jquery'
+        }
+    });
+    //        seajs.use(['arale/autocomplete/1.2.3/autocomplete','$'], function(AutoComplete,$) {
+    //          $('.logo').click(function (e) {
+    //              $('body,html').animate({
+    //                scrollTop: 0
+    //          }, 500);
+    //            e.preventDefault();
+    //          });
+    //            new AutoComplete({
+    //                trigger: '#search',
+    //                filter:"stringMatch",
+    //                dataSource: [
+    //"../about/about.html","dev-exp-doc.html","dev-guild.html","mobile-platform-grade.html","website-guild.html","../amj/about.html","../amj/aj-doc.html","../amj/demo.html","../amui/about.html","../amui/amui-doc.html","../amw/about.html","../amw/aw-doc.html","../h5app/about.html","../h5app/ak47-doc.html","../h5container/ab-doc.html","../h5container/about.html","../h5container/jsapi-doc.html","../wiki/bookmark.html",
+    //                ]
+    //            }).render().on('itemSelect',function  (data) {
+    //              window.location = data.matchKey;
+    //            });
+    //        });
+    //解决nav中包含http或者https时候的bug
+    seajs.use("$", function ($) {
+//            console.log($);
+        $('.nav a').on("click", function (e) {
+//            e.preventDefault();
+            var link = $(this).attr("href");
+//            console.log(link);
+            if (link.indexOf("http") == 0) {
+                $(this).attr("target", "_blank");
+                $(this).attr("href",link.replace("../", ""));
             }
         });
-//        seajs.use(['arale/autocomplete/1.2.3/autocomplete','$'], function(AutoComplete,$) {
-//          $('.logo').click(function (e) {
-//              $('body,html').animate({
-//                scrollTop: 0
-//          }, 500);
-//            e.preventDefault();
-//          });
-//            new AutoComplete({
-//                trigger: '#search',
-//                filter:"stringMatch",
-//                dataSource: [
-//"../about/about.html","dev-exp-doc.html","dev-guild.html","mobile-platform-grade.html","website-guild.html","../amj/about.html","../amj/aj-doc.html","../amt/about.html","../amui/about.html","../amui/amui-doc.html","../amw/about.html","../amw/aw-doc.html","../h5app/about.html","../h5app/ak47-doc.html","../h5container/ab-doc.html","../h5container/about.html","../h5container/jsapi-doc.html","../wiki/bookmark.html",
-//                ]
-//            }).render().on('itemSelect',function  (data) {
-//              window.location = data.matchKey;
-//            });
-//        });
-    </script>
+    });
+</script>
 </html>

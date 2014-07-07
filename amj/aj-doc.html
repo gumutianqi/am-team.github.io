@@ -1,15 +1,15 @@
 <!DOCTYPE HTML>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta name="generator" content="nico 0.5.1">
     <meta name="theme" content="autumn 0.1">
-    <title>AMJ alipay mobile javascript kit | AM - 移动Web开放解决方案</title>
-    <link rel="stylesheet" href="../static/1140.css" />
-    <link rel="stylesheet" href="../static/wiki.css" />
-    <link rel="stylesheet" href="../static/syntax.css" />
-  </head>
+    <title>AMJ - alipay mobile javascript kit | AM - 移动Web开放解决方案</title>
+    <link rel="stylesheet" href="../static/1140.css"/>
+    <link rel="stylesheet" href="../static/wiki.css"/>
+    <link rel="stylesheet" href="../static/syntax.css"/>
+</head>
 <body>
 <div class="goTop">
     <span>Go TOP</span>
@@ -18,7 +18,8 @@
     <div class="main">
         <div class="header">
             <div class="slogan row">
-                <a href="../default.html"><img src="https://i.alipayobjects.com/i/ecmng/png/201406/2m8Ebk4eZh.png" class="slogan-logo" alt="alipay"/></a>
+                <a href="../default.html"><img src="https://i.alipayobjects.com/i/ecmng/png/201406/2m8Ebk4eZh.png"
+                                               class="slogan-logo" alt="alipay"/></a>
                 <span>移动Web解决方案</span>
                 <span class="search">
                    <!--<input type="text" id="search" placeholder="搜点东西...">-->
@@ -63,6 +64,10 @@
                 <a href="../amg/website-guild.html">移动建站指南</a>
             </li>
             
+            <li>
+                <a href="https://github.com/am-team/amDoc/../">Github</a>
+            </li>
+            
         </ul>
         
     </li>
@@ -78,7 +83,11 @@
             </li>
             
             <li>
-                <a href="../amui/amui-doc.html">API文档</a>
+                <a href="../amui/amui-doc.html">接口文档</a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/am-team/amUI/../">Github</a>
             </li>
             
         </ul>
@@ -99,6 +108,10 @@
                 <a href="aj-doc.html">接口文档</a>
             </li>
             
+            <li>
+                <a href="https://github.com/am-team/amJS/../">Github</a>
+            </li>
+            
         </ul>
         
     </li>
@@ -115,6 +128,10 @@
             
             <li>
                 <a href="../amw/aw-doc.html">接口文档</a>
+            </li>
+            
+            <li>
+                <a href="https://github.com/am-team/amWidget/../">Github</a>
             </li>
             
         </ul>
@@ -136,7 +153,7 @@
             </li>
             
             <li>
-                <a href="../h5container/jsapi-doc.html">容器API文档</a>
+                <a href="../h5container/jsapi-doc.html">JSAPI 接口文档</a>
             </li>
             
         </ul>
@@ -183,15 +200,13 @@
         
 <div class="row mar">
     <div class="threecol meta">
-        <ul class="sub-nav">
-        </ul>
     </div>
     
  
     <div class="ninecol content">
         <div class="document">
             <div class="post-header">
-                <h2 class="document-title">AMJ alipay mobile javascript kit</h2>
+                <h2 class="document-title">AMJ - alipay mobile javascript kit</h2>
 
                 <div class="post-meta">
                     <!--<span></span> /-->
@@ -199,7 +214,9 @@
                 </div>
             </div>
             <div class="entry-content">
-                <h2 id="date">date</h2><p>date提供了获取当前时间戳和格式化指定日期的方法</p>
+                <h2 id="源代码地址">源代码地址</h2><p><a href="https://github.com/am-team/amJS/tree/master/dist">https://github.com/am-team/amJS/tree/master/dist</a></p>
+<p>源代码中包含了aj.js和aj.min.js,aj是带注释的完整版本，aj.min.js是编译后的版本，可以根据实际使用进行加载</p>
+<h2 id="date">date</h2><p>date提供了获取当前时间戳和格式化指定日期的方法</p>
 <h3 id="示例代码">示例代码</h3><p>js</p>
 <pre>    var date = AJ.date;
     var d = new Date();
@@ -236,7 +253,9 @@
      * @example
      * var nowStamp= AJ.date.now();
      */
-    now: function ()</pre><h2 id="image">image</h2><p>image提供了将图片文件转为base64编码的方法</p>
+    now: function ()</pre><h3 id="demo">Demo</h3><p><a href="../examples/date.html">Demo地址</a></p>
+<p>二维码地址</p>
+<h2 id="image">image</h2><p>image提供了将图片文件转为base64编码的方法</p>
 <h3 id="示例代码">示例代码</h3><p>js</p>
 <pre>    AJ.image.toBase64(&quot;abc.png&quot;,function(base64Data,error){
         //返回值base64Data即为结果，如&quot;data:image/png;base64.....&quot;，
@@ -331,7 +350,19 @@
 <h3 id="示例代码">示例代码</h3><p>js</p>
 <pre>    var uri = AJ.uri;
     var url = uri.parse(location.href); //返回一个uri对象
-    uri.setParam(location.href,&quot;name&quot;,&quot;value&quot;); //返回当前的url并且在queryString上加上name=value的值</pre><h3 id="接口列表">接口列表</h3><pre>    /**
+    uri.setParam(location.href,&quot;name&quot;,&quot;value&quot;); //返回当前的url并且在queryString上加上name=value的值
+
+    uri.getParam(&quot;http://www.alipay.com?a=b&quot;,&quot;a&quot;);//返回b</pre><h3 id="接口列表">接口列表</h3><h4 id="uri对象">uri对象</h4><ul>
+<li>source：源url</li>
+<li>protocol：协议名 http https file</li>
+<li>host：域名</li>
+<li>port：端口号</li>
+<li>query：query string数值</li>
+<li>params：query string 对象</li>
+<li>hast：hash数值</li>
+<li>path：路径</li>
+</ul>
+<pre>    /**
      * 解析url，将url解析成uri对象
      * @param {string} url url字符串,如果传入的是对象，这不做任何处理，返回
      * @returns {object} uri对象
@@ -382,8 +413,7 @@
      * @returns {string|object}  如果传入的参数是string，则返回string，否则返回uri对象
      *
      * */
-    removeParam: function (url, name)</pre><h3 id="规则说明">规则说明</h3><p>1.</p>
-
+    removeParam: function (url, name)</pre>
             </div>
         </div>
     </div>
@@ -393,9 +423,9 @@
  
     </div>
 </div>
-         <!--<div class="logo">-->
-          <!--&lt;!&ndash;<div class="logo-inner"></div>&ndash;&gt;-->
-        <!--</div>-->
+<!--<div class="logo">-->
+<!--&lt;!&ndash;<div class="logo-inner"></div>&ndash;&gt;-->
+<!--</div>-->
 <div class="footer">
     <div class="grid-990 sitelink fn-clear" coor="sitelink" role="contentinfo">
         <ul class="ui-link fn-clear">
@@ -463,29 +493,42 @@
     </div>
 </div>
 </body>
-    <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="../static/global.js"></script>
-    <script>
-        seajs.config({
-            alias: {
-                "$": 'jquery/jquery/1.7.2/jquery'
+<script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="../static/global.js"></script>
+<script>
+    seajs.config({
+        alias: {
+            "$": 'jquery/jquery/1.7.2/jquery'
+        }
+    });
+    //        seajs.use(['arale/autocomplete/1.2.3/autocomplete','$'], function(AutoComplete,$) {
+    //          $('.logo').click(function (e) {
+    //              $('body,html').animate({
+    //                scrollTop: 0
+    //          }, 500);
+    //            e.preventDefault();
+    //          });
+    //            new AutoComplete({
+    //                trigger: '#search',
+    //                filter:"stringMatch",
+    //                dataSource: [
+    //"../about/about.html","../amg/dev-exp-doc.html","../amg/dev-guild.html","../amg/mobile-platform-grade.html","../amg/website-guild.html","about.html","aj-doc.html","demo.html","../amui/about.html","../amui/amui-doc.html","../amw/about.html","../amw/aw-doc.html","../h5app/about.html","../h5app/ak47-doc.html","../h5container/ab-doc.html","../h5container/about.html","../h5container/jsapi-doc.html","../wiki/bookmark.html",
+    //                ]
+    //            }).render().on('itemSelect',function  (data) {
+    //              window.location = data.matchKey;
+    //            });
+    //        });
+    //解决nav中包含http或者https时候的bug
+    seajs.use("$", function ($) {
+//            console.log($);
+        $('.nav a').on("click", function (e) {
+//            e.preventDefault();
+            var link = $(this).attr("href");
+//            console.log(link);
+            if (link.indexOf("http") == 0) {
+                $(this).attr("target", "_blank");
+                $(this).attr("href",link.replace("../", ""));
             }
         });
-//        seajs.use(['arale/autocomplete/1.2.3/autocomplete','$'], function(AutoComplete,$) {
-//          $('.logo').click(function (e) {
-//              $('body,html').animate({
-//                scrollTop: 0
-//          }, 500);
-//            e.preventDefault();
-//          });
-//            new AutoComplete({
-//                trigger: '#search',
-//                filter:"stringMatch",
-//                dataSource: [
-//"../about/about.html","../amg/dev-exp-doc.html","../amg/dev-guild.html","../amg/mobile-platform-grade.html","../amg/website-guild.html","about.html","aj-doc.html","../amt/about.html","../amui/about.html","../amui/amui-doc.html","../amw/about.html","../amw/aw-doc.html","../h5app/about.html","../h5app/ak47-doc.html","../h5container/ab-doc.html","../h5container/about.html","../h5container/jsapi-doc.html","../wiki/bookmark.html",
-//                ]
-//            }).render().on('itemSelect',function  (data) {
-//              window.location = data.matchKey;
-//            });
-//        });
-    </script>
+    });
+</script>
 </html>
