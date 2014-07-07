@@ -190,7 +190,7 @@ hr {
 }
 
 .footer {
-    /*padding-bottom: 30px;*/	/* grid-990已经有padding了，没必要重复 */
+    /*padding-bottom: 30px;*/   /* grid-990已经有padding了，没必要重复 */
     font-size: 12px;
     background: #ededed;
     text-align: center;
@@ -234,7 +234,7 @@ hr {
 
 .header-nav {
     width: 100%;
-	height: 57px;
+    height: 57px;
     background: #fd7300;
     filter: alpha(opacity=90);
     -moz-opacity: .9;
@@ -585,10 +585,13 @@ hr {
     font-size: 48px;
     font-weight: normal;
     margin-bottom: 15px;
+    line-height: 1.2em;
+    word-wrap: break-word;
 }
 .default-c p{
     margin: 0;
     font-size: 26px;
+    line-height: 1.2em;
 }
 .mar{
     margin-top: 30px;
@@ -820,7 +823,7 @@ hr {
     padding: 0 8px;
     border-right: 1px solid #cccccc;
     line-height: 14px;
-	margin-left: -3px;
+    margin-left: -3px;
 }
 
 .sitelink .ui-link-item a {

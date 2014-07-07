@@ -47,7 +47,7 @@ define(function(require, exports, module) {
                     htmlStr+=('<dt data-index="'+index+'"><a href="#'+$(this).attr('id')+'">' +$(this).text()+'</a></dt>');
                     break;
                 case 'H3':
-                    htmlStr+=('<dd data-index="'+index+'"><a href="#'+$(this).attr('id')+'">'+$(this).text()+'</a></dd>');
+                    htmlStr+=('<dd data-index="'+index+'"><a href="#'+$(this).attr('id')+'">' +$(this).text()+'</a></dd>');
                     break;
             }
         }
@@ -87,26 +87,7 @@ define(function(require, exports, module) {
     });
     $("#sidebar-fixed-nav a").click(function () {       //动画滚动到指定锚点
         var t = $(this);
-        noScrollEvent = true;
-        $("body").animate({scrollTop: $(t.attr("href")).offset().top}, 800, function () {
-            $(".navigation").fadeOut(400);
-            noScrollEvent = false;
-        });
+        $("body").animate({scrollTop: $(t.attr("href")).offset().top - 57}, 800);
         return false;
     })
-//    var past, noScrollEvent = false;
-//    $(window).scroll(function () {          //向下滑动时隐藏菜单
-//        var nav = $(".navigation");
-//        var cur = $(this).scrollTop();
-//        setTimeout(function () {
-//            past = cur;
-//        }, 0);
-//        if(noScrollEvent == false){
-//            if (cur >= past) {
-//                nav.fadeOut(400);
-//            } else{
-//                nav.fadeIn(400);
-//            };
-//        }
-//    })
 });
