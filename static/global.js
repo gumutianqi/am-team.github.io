@@ -94,19 +94,19 @@ define(function(require, exports, module) {
         });
         return false;
     })
-    var past, noScrollEvent = false;
-    $(window).scroll(function () {          //向下滑动时隐藏菜单
-        var nav = $(".navigation");
-        var cur = $(this).scrollTop();
-        setTimeout(function () {
-            past = cur;
-        }, 0);
-        if(noScrollEvent == false){
-            if (cur >= past) {
-                nav.fadeOut(400);
-            } else{
-                nav.fadeIn(400);
-            };
-        }
-    })
+//    var past, noScrollEvent = false;
+//    $(window).scroll(function () {          //向下滑动时隐藏菜单
+//        var nav = $(".navigation");
+//        var cur = $(this).scrollTop();
+//        setTimeout(function () {
+//            past = cur;
+//        }, 0);
+//        if(noScrollEvent == false){
+//            if (cur >= past) {
+//                nav.fadeOut(400);
+//            } else{
+//                nav.fadeIn(400);
+//            };
+//        }
+//    })
 });
