@@ -618,12 +618,9 @@ hr {
     width: 100%;
     max-width:280px;
     min-width:163px;
-    /*padding:10px 0;*/
-    /*border:1px solid #eee;*/
-    /*border-radius:5px;*/
-    /*background-color:#eee;*/
     text-shadow:none;
-    /*z-index: -1;*/
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .sidebar-fixed-top{
     position: fixed !important;

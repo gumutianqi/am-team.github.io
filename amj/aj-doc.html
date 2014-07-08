@@ -222,10 +222,13 @@
 <h2 id="源代码">源代码</h2><p><a href="https://github.com/am-team/amJS/tree/master/dist">https://github.com/am-team/amJS/tree/master/dist</a></p>
 <h2 id="date">date</h2><p>date提供了获取当前时间戳和格式化指定日期的方法</p>
 <h3 id="示例代码">示例代码</h3><p>js</p>
-<pre>    var date = AJ.date;
+<script>    var date = AJ.date;
     var d = new Date();
-    var ds = date.format(d,&#39;yy-MM-dd&#39;); //2014-05-03
-    var dnow = date.now(); //返回当前时间戳，如：1403104207894</pre><h3 id="接口列表">接口列表</h3><pre>
+    var ds = date.format(d,'yy-MM-dd'); //2014-05-03
+    var dnow = date.now(); //返回当前时间戳，如：1403104207894</script><div class="highlight"><pre><code class="javascript">    <span class="keyword">var</span> date = AJ.date;
+    <span class="keyword">var</span> d = <span class="keyword">new</span> Date();
+    <span class="keyword">var</span> ds = date.format(d,<span class="string">'yy-MM-dd'</span>); <span class="comment">//2014-05-03</span>
+    <span class="keyword">var</span> dnow = date.now(); <span class="comment">//返回当前时间戳，如：1403104207894</span></code></pre></div><h3 id="接口列表">接口列表</h3><script>
     /**
      * 日期格式化方法
      *
@@ -239,9 +242,9 @@
      *
      * @example
      * var d = new Date();
-     * var ds = AJ.date.format(d,&#39;yy-MM-dd&#39;); //2014-05-03
-     * var ds = AJ.date.format(d,&#39;yy/M/d&#39;); //2014/5/3
-     * var ds = AJ.date.format(d,&#39;yy/MM/d hh:mm:ss&#39;); //2014/5/3 18:31:24
+     * var ds = AJ.date.format(d,'yy-MM-dd'); //2014-05-03
+     * var ds = AJ.date.format(d,'yy/M/d'); //2014/5/3
+     * var ds = AJ.date.format(d,'yy/MM/d hh:mm:ss'); //2014/5/3 18:31:24
      */
     format: function (date, formatter)
 
@@ -257,7 +260,39 @@
      * @example
      * var nowStamp= AJ.date.now();
      */
-    now: function ()</pre><h3 id="demo">Demo</h3><p><strong>二维码地址</strong></p>
+    now: function ()</script><div class="highlight"><pre><code class="javascript">
+    /**
+     * 日期格式化方法
+     *
+     * @memberof AJ.date
+     * @param {!Date} date - 日期对象
+     * @param {?String} formatter - 指定格式化格式 格式说明 y代表年份，M代表月份，d代表天数，h代表时，m代表分，s代表秒
+     *
+     * @returns {String}
+     *
+     * @desc 日期格式化方法
+     *
+     * @example
+     * var d = new Date();
+     * var ds = AJ.date.format(d,'yy-MM-dd'); //2014-05-03
+     * var ds = AJ.date.format(d,'yy/M/d'); //2014/5/3
+     * var ds = AJ.date.format(d,'yy/MM/d hh:mm:ss'); //2014/5/3 18:31:24
+     */
+    format: function (date, formatter)
+
+    /**
+     * 当前时间时间戳
+     *
+     * @memberof AJ.date
+     *
+     * @returns {Number}
+     *
+     * @desc 当前时间时间戳
+     *
+     * @example
+     * var nowStamp= AJ.date.now();
+     */
+    now: function ()</code></pre></div><h3 id="demo">Demo</h3><p><strong>二维码地址</strong></p>
 <p><img src="https://i.alipayobjects.com/i/localhost/png/201407/2zkAtpcKS7.png" alt="date demo 二维码"></p>
 <p><code>手机观看效果更好</code></p>
 <p>查看<a href="../examples/date.html">Demo</a></p>
