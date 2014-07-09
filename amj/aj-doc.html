@@ -343,8 +343,9 @@
 <li>该storage设置的key值和原生的通用，不过要使用过期功能，则必须使用该组件。建议在代码中不要把该组件和原生混用，以便出现不符预期的情况</li>
 <li>原生storage如果传入的value为object的时，会转成[object Object]，该组件会对object进行JSON.stringify处理，其他类型皆和原生storage处理一致</li>
 <li>该组件的输出value为string，不会强制做JSON.parse，需要使用方根据事情情况，自行处理</li>
-<li>该组件对于异常，键值不存在，storage不支持等情况，api的返回皆为undefined<h2 id="string">string</h2>string提供了计算字符串长度的方法，中文算两个，英文算一个</li>
+<li>该组件对于异常，键值不存在，storage不支持等情况，api的返回皆为undefined</li>
 </ol>
+<h2 id="string">string</h2><p>string提供了计算字符串长度的方法，中文算两个，英文算一个</p>
 <h3 id="示例代码">示例代码</h3><p>js</p>
 <div class="highlight"><pre><code class="javascript">    <span class="keyword">var</span> str = <span class="string">"alipay"</span>;
     <span class="keyword">var</span> length = AJ.string.getFullLen(str); <span class="comment">//返回字符串str的长度</span></code></pre></div><h3 id="接口列表">接口列表</h3><div class="highlight"><pre><code class="javascript">    <span class="comment">/**
