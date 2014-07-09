@@ -574,7 +574,6 @@ hr {
 .default-banner{
     background: url(https://i.alipayobjects.com/i/ecmng/jpg/201406/2mVejtcNtP.jpg) no-repeat;
     height: 500px;
-    margin-top: -57px;
 }
 .default-c{
     text-align: center;
@@ -626,80 +625,6 @@ hr {
     position: fixed !important;
     top: 87px !important;
     width: 26.05% !important;
-}
-@media (max-width: 640px){
-    body{
-        font: 14px/20px "Georgia", "Xin Gothic", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", "SimSun", sans-serif;
-    }
-    .header, .sub-nav {
-        text-align: center;
-    }
-    .navbar-toggle{
-        display: block !important;
-    }
-    .slogan{
-        text-align: left;
-        text-indent: 8px;
-        margin: 0;
-        border-bottom: 2px solid #aaa;
-    }
-    .slogan-logo{
-        width: 3em;
-        padding-right: 7px;
-    }
-    .slogan span{
-        font-size: 16px;
-        margin-left: 4px;
-    }
-    .header-nav{
-        height: auto;
-        overflow: hidden;
-    }
-    .nav > li{
-        border-top: 1px solid #A05F36;
-        border-bottom: 1px solid #E2C8A6;
-    }
-    .nav > li:first-child{
-        border-top: none;
-    }
-    .nav-sub{
-        position: relative;
-        top: auto;
-        opacity: 1;
-        visibility: visible;
-        -webkit-transform: none;
-        overflow: hidden;
-    }
-    .nav-sub > li{
-        display: block;
-        float: left;
-        padding: 0;
-        width: 50%;
-    }
-    .header-nav-fixed > .navigation{
-        position: relative;
-    }
-    .row .threecol{
-        width: 100%;
-    }
-    .row .ninecol{
-        margin-left: 3%;
-        width: 94%;
-    }
-    .navigation{
-        position: relative !important;  
-        top: auto !important;      
-    }
-    .navigation .nav{
-        display: block;
-    }
-    #sidebar-wrapper{
-        position: relative !important;
-        width:100% !important;
-        max-width: none !important;
-        top: auto !important;
-        text-shadow:none;
-    }
 }
 #sidebar-fixed-nav{
     border-bottom: solid 1px #bdbdbd;
@@ -889,9 +814,9 @@ hr {
 
 .a-list li {
     float: left;
-    width: 290px;
-    margin-left: 65px;
-    display: inline;
+    width: 30%;
+    margin: 0 1.55%;
+    display: inline-block;
     text-align: center;
     font-family: "microsoft yahei";
 }
@@ -950,4 +875,89 @@ hr {
     cursor: pointer;
     opacity: 1;
     font-weight: bold;
+}
+
+@media (max-width: 640px){
+    body{
+        font: 14px/20px "Georgia", "Xin Gothic", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", "SimSun", sans-serif;
+    }
+    .header, .sub-nav {
+        text-align: center;
+    }
+    .navbar-toggle{
+        display: block !important;
+    }
+    .slogan{
+        text-align: left;
+        text-indent: 8px;
+        margin: 0;
+        border-bottom: 2px solid #aaa;
+    }
+    .slogan-logo{
+        width: 3em;
+        padding-right: 7px;
+    }
+    .slogan span{
+        font-size: 16px;
+        margin-left: 4px;
+    }
+    .header-nav{
+        height: auto;
+        overflow: hidden;
+    }
+    .nav > li{
+        border-top: 1px solid #A05F36;
+        border-bottom: 1px solid #E2C8A6;
+    }
+    .nav > li:first-child{
+        border-top: none;
+    }
+    .nav-sub{
+        position: relative;
+        top: auto;
+        opacity: 1;
+        visibility: visible;
+        -webkit-transform: none;
+        overflow: hidden;
+    }
+    .nav-sub > li{
+        display: block;
+        float: left;
+        padding: 0;
+        width: 50%;
+    }
+    .header-nav-fixed > .navigation{
+        position: relative;
+    }
+    .row .threecol{
+        width: 100%;
+    }
+    .row .ninecol{
+        margin-left: 3%;
+        width: 94%;
+    }
+    .navigation{
+        position: relative !important;  
+        top: auto !important;      
+    }
+    .navigation .nav{
+        display: block;
+    }
+    #sidebar-wrapper{
+        position: relative !important;
+        width:100% !important;
+        max-width: none !important;
+        top: auto !important;
+        text-shadow:none;
+    }
+    .a-list{
+        margin: 20px 0;
+    }
+    .a-list li{
+        width: 90%;
+        margin: 5px 5%;
+    }
+    .a-list li h3, .a-list li p, .a-list li a{
+        font-size: 1em;
+    }
 }

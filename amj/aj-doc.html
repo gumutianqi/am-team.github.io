@@ -222,45 +222,10 @@
 <h2 id="源代码">源代码</h2><p><a href="https://github.com/am-team/amJS/tree/master/dist">https://github.com/am-team/amJS/tree/master/dist</a></p>
 <h2 id="date">date</h2><p>date提供了获取当前时间戳和格式化指定日期的方法</p>
 <h3 id="示例代码">示例代码</h3><p>js</p>
-<script>    var date = AJ.date;
-    var d = new Date();
-    var ds = date.format(d,'yy-MM-dd'); //2014-05-03
-    var dnow = date.now(); //返回当前时间戳，如：1403104207894</script><div class="highlight"><pre><code class="javascript">    <span class="keyword">var</span> date = AJ.date;
+<div class="highlight"><pre><code class="javascript">    <span class="keyword">var</span> date = AJ.date;
     <span class="keyword">var</span> d = <span class="keyword">new</span> Date();
     <span class="keyword">var</span> ds = date.format(d,<span class="string">'yy-MM-dd'</span>); <span class="comment">//2014-05-03</span>
-    <span class="keyword">var</span> dnow = date.now(); <span class="comment">//返回当前时间戳，如：1403104207894</span></code></pre></div><h3 id="接口列表">接口列表</h3><script>
-    /**
-     * 日期格式化方法
-     *
-     * @memberof AJ.date
-     * @param {!Date} date - 日期对象
-     * @param {?String} formatter - 指定格式化格式 格式说明 y代表年份，M代表月份，d代表天数，h代表时，m代表分，s代表秒
-     *
-     * @returns {String}
-     *
-     * @desc 日期格式化方法
-     *
-     * @example
-     * var d = new Date();
-     * var ds = AJ.date.format(d,'yy-MM-dd'); //2014-05-03
-     * var ds = AJ.date.format(d,'yy/M/d'); //2014/5/3
-     * var ds = AJ.date.format(d,'yy/MM/d hh:mm:ss'); //2014/5/3 18:31:24
-     */
-    format: function (date, formatter)
-
-    /**
-     * 当前时间时间戳
-     *
-     * @memberof AJ.date
-     *
-     * @returns {Number}
-     *
-     * @desc 当前时间时间戳
-     *
-     * @example
-     * var nowStamp= AJ.date.now();
-     */
-    now: function ()</script><div class="highlight"><pre><code class="javascript">
+    <span class="keyword">var</span> dnow = date.now(); <span class="comment">//返回当前时间戳，如：1403104207894</span></code></pre></div><h3 id="接口列表">接口列表</h3><div class="highlight"><pre><code class="javascript">
     /**
      * 日期格式化方法
      *
@@ -298,9 +263,9 @@
 <p>查看<a href="../examples/date.html">Demo</a></p>
 <h2 id="image">image</h2><p>image提供了将图片文件转为base64编码的方法</p>
 <h3 id="示例代码">示例代码</h3><p>js</p>
-<pre>    AJ.image.toBase64(&quot;abc.png&quot;,function(base64Data,error){
-        //返回值base64Data即为结果，如&quot;data:image/png;base64.....&quot;，
-    })</pre><h3 id="接口列表">接口列表</h3><pre>    /**
+<div class="highlight"><pre><code class="javascript">    AJ.image.toBase64(<span class="string">"abc.png"</span>,<span class="function"><span class="keyword">function</span><span class="params">(base64Data,error)</span>{</span>
+        <span class="comment">//返回值base64Data即为结果，如"data:image/png;base64....."，</span>
+    })</code></pre></div><h3 id="接口列表">接口列表</h3><div class="highlight"><pre><code class="javascript">    <span class="comment">/**
      * image转换base64编码方法
      *
      * @memberof AJ.toBase64
@@ -310,27 +275,31 @@
      * @desc 图片转换base64编码
      *
      * @example
-     * AJ.image.toBase64(&quot;abc.png&quot;,function(base64Data,error){
+     * AJ.image.toBase64("abc.png",function(base64Data,error){
      *  //data:image/png;base64.....
      * })
-     */
-     image.toBase64 = function (path, callback)</pre><h3 id="规则说明">规则说明</h3><ol>
+     */</span>
+     image.toBase64 = <span class="function"><span class="keyword">function</span> <span class="params">(path, callback)</span></span></code></pre></div><h3 id="demo">Demo</h3><p><strong>二维码地址</strong></p>
+<p><img src="https://i.alipayobjects.com/i/ecmng/png/201407/30Lzw1F4Q3.png" alt="图片转码测试 demo 二维码"></p>
+<p><code>手机观看效果更好</code></p>
+<p>查看<a href="../examples/image.html">Demo</a></p>
+<h3 id="规则说明">规则说明</h3><ol>
 <li>不支持跨域图片的base64编码
 2、不支持file形式的图片base64编码<h2 id="storage">storage</h2>storage提供了页面的数据存储的模式，采用了localstorage的机制进行数据存储</li>
 </ol>
 <h3 id="示例代码">示例代码</h3><p>js</p>
-<pre>    var storage = AJ.storage;
-    storage.set(&quot;key1&quot;,&quot;value1&quot;);
-    storage.get(&quot;key1&quot;); //返回value1
-    storage.clear();    //清空所有键值
-    storage.getExpiredDate(&quot;key1&quot;)        //获取key1键值的过期时间</pre><h3 id="接口列表">接口列表</h3><pre>    /**
+<div class="highlight"><pre><code class="javascript">    <span class="keyword">var</span> storage = AJ.storage;
+    storage.set(<span class="string">"key1"</span>,<span class="string">"value1"</span>);
+    storage.get(<span class="string">"key1"</span>); <span class="comment">//返回value1</span>
+    storage.clear();    <span class="comment">//清空所有键值</span>
+    storage.getExpiredDate(<span class="string">"key1"</span>)        <span class="comment">//获取key1键值的过期时间</span></code></pre></div><h3 id="接口列表">接口列表</h3><div class="highlight"><pre><code class="javascript">    /**
      *
      * 获取储存内容
      * @param {string} key 存储内容的key值
      * @returns {string|undefined} 返回值为undefined没找到该内容
      *
      * @example
-     * var content = AJ.storage.get(&quot;name&quot;);
+     * var content = AJ.storage.get("name");
      *
      * */
     get: function (key)
@@ -366,15 +335,19 @@
      * @returns {undefined|date} 如果该key不存在或者没有日期，则返回undefined,否则返回date对象
      *
      * */
-    getExpiredDate: function (key)</pre><h3 id="规则说明">规则说明</h3><ol>
+    getExpiredDate: function (key)</code></pre></div><h3 id="demo">Demo</h3><p><strong>二维码地址</strong></p>
+<p><img src="https://i.alipayobjects.com/i/ecmng/png/201407/30M1hg3eRT.png" alt="storage demo 二维码"></p>
+<p><code>手机观看效果更好</code></p>
+<p>查看<a href="../examples/storage.html">Demo</a></p>
+<h3 id="规则说明">规则说明</h3><ol>
 <li>该storage设置的key值和原生的通用，不过要使用过期功能，则必须使用该组件。建议在代码中不要把该组件和原生混用，以便出现不符预期的情况</li>
 <li>原生storage如果传入的value为object的时，会转成[object Object]，该组件会对object进行JSON.stringify处理，其他类型皆和原生storage处理一致</li>
 <li>该组件的输出value为string，不会强制做JSON.parse，需要使用方根据事情情况，自行处理</li>
 <li>该组件对于异常，键值不存在，storage不支持等情况，api的返回皆为undefined<h2 id="string">string</h2>string提供了计算字符串长度的方法，中文算两个，英文算一个</li>
 </ol>
 <h3 id="示例代码">示例代码</h3><p>js</p>
-<pre>    var str = &quot;alipay&quot;;
-    var length = AJ.string.getFullLen(str); //返回字符串str的长度</pre><h3 id="接口列表">接口列表</h3><pre>    /**
+<div class="highlight"><pre><code class="javascript">    <span class="keyword">var</span> str = <span class="string">"alipay"</span>;
+    <span class="keyword">var</span> length = AJ.string.getFullLen(str); <span class="comment">//返回字符串str的长度</span></code></pre></div><h3 id="接口列表">接口列表</h3><div class="highlight"><pre><code class="javascript">    <span class="comment">/**
      * 计算字符串长度的方法，中文算两个，英文算一个，特殊字符不算
      *
      * @memberof AJ.string
@@ -386,14 +359,18 @@
      *
      * @example
      * AJ.string.getFullLen($(this).val())
-     */
-    string.getFullLen = function (str)</pre><h2 id="uri">uri</h2><p>uri提供了对url进行对象化以及提供了便捷的方法，更加容易对url进行queryString的操作</p>
+     */</span>
+    string.getFullLen = <span class="function"><span class="keyword">function</span> <span class="params">(str)</span></span></code></pre></div><h3 id="demo">Demo</h3><p><strong>二维码地址</strong></p>
+<p><img src="https://i.alipayobjects.com/i/ecmng/png/201407/30M3qmQJZf.png" alt="string demo 二维码"></p>
+<p><code>手机观看效果更好</code></p>
+<p>查看<a href="../examples/string.html">Demo</a></p>
+<h2 id="uri">uri</h2><p>uri提供了对url进行对象化以及提供了便捷的方法，更加容易对url进行queryString的操作</p>
 <h3 id="示例代码">示例代码</h3><p>js</p>
-<pre>    var uri = AJ.uri;
-    var url = uri.parse(location.href); //返回一个uri对象
-    uri.setParam(location.href,&quot;name&quot;,&quot;value&quot;); //返回当前的url并且在queryString上加上name=value的值
+<div class="highlight"><pre><code class="javascript">    <span class="keyword">var</span> uri = AJ.uri;
+    <span class="keyword">var</span> url = uri.parse(location.href); <span class="comment">//返回一个uri对象</span>
+    uri.setParam(location.href,<span class="string">"name"</span>,<span class="string">"value"</span>); <span class="comment">//返回当前的url并且在queryString上加上name=value的值</span>
 
-    uri.getParam(&quot;http://www.alipay.com?a=b&quot;,&quot;a&quot;);//返回b</pre><h3 id="接口列表">接口列表</h3><h4 id="uri对象">uri对象</h4><ul>
+    uri.getParam(<span class="string">"http://www.alipay.com?a=b"</span>,<span class="string">"a"</span>);<span class="comment">//返回b</span></code></pre></div><h3 id="接口列表">接口列表</h3><h4 id="uri对象">uri对象</h4><ul>
 <li>source：源url</li>
 <li>protocol：协议名 http https file</li>
 <li>host：域名</li>
@@ -403,7 +380,7 @@
 <li>hast：hash数值</li>
 <li>path：路径</li>
 </ul>
-<pre>    /**
+<div class="highlight"><pre><code class="javascript">    /**
      * 解析url，将url解析成uri对象
      * @param {string} url url字符串,如果传入的是对象，这不做任何处理，返回
      * @returns {object} uri对象
@@ -454,7 +431,11 @@
      * @returns {string|object}  如果传入的参数是string，则返回string，否则返回uri对象
      *
      * */
-    removeParam: function (url, name)</pre>
+    removeParam: function (url, name)</code></pre></div><h3 id="demo">Demo</h3><p><strong>二维码地址</strong></p>
+<p><img src="https://i.alipayobjects.com/i/ecmng/png/201407/30M4zmFqUZ.png" alt="uri demo 二维码"></p>
+<p><code>手机观看效果更好</code></p>
+<p>查看<a href="../examples/uri.html">Demo</a></p>
+
             </div>
         </div>
     </div>
