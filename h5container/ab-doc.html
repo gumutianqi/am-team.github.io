@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="generator" content="nico 0.5.1">
     <meta name="theme" content="autumn 0.1">
-    <title>AB - alipay container bridge kit | AM - 移动Web开放解决方案</title>
+    <title>AliBridge - alipay container bridge kit | AM - 移动Web开放解决方案</title>
     <link rel="stylesheet" href="../static/1140.css"/>
     <link rel="stylesheet" href="../static/wiki.css"/>
     <link rel="stylesheet" href="../static/syntax.css"/>
@@ -141,7 +141,7 @@
     <li>
         <a  archiveId = "H5Container"
         href="about.html">
-        AM Bridge </a>
+        Ali Bridge </a>
         
         <ul class="nav-sub">
             <li>
@@ -149,7 +149,7 @@
             </li>
             
             <li>
-                <a href="ab-doc.html">AM Bridge组件</a>
+                <a href="ab-doc.html">Ali Bridge组件</a>
             </li>
             
             <li>
@@ -206,7 +206,7 @@
     <div class="ninecol content">
         <div class="document">
             <div class="post-header">
-                <h2 class="document-title">AB - alipay container bridge kit</h2>
+                <h2 class="document-title">AliBridge - alipay container bridge kit</h2>
 
                 <div class="post-meta">
                     <!--<span></span> /-->
@@ -214,21 +214,21 @@
                 </div>
             </div>
             <div class="entry-content">
-                <p>支持支付宝容器的bridge接口控件</p>
-<p>提供了针对Alipay JSAPI的通用调用接口和全局绑定事件，调用方无需关注接口实现细节</p>
-<h2 id="示例代码">示例代码</h2><p>js</p>
-<pre>    //唤起弱提示
-    AB.call(&quot;toast&quot;,{
-        content:&quot;这是弱提示&quot;
-    },function(){
+                <p>为支付宝容器的JSAPI上进行封装的AliBridge控件，主要为用户提供了便利的接口调用和异常处理等，而无需关注JSAPI内部的实现逻辑</p>
+<h2 id="alibridge">AliBridge</h2><p>提供了针对Alipay JSAPI的通用调用接口和全局绑定事件，调用方无需关注接口实现细节</p>
+<h3 id="示例代码">示例代码</h3><p>js</p>
+<div class="highlight"><pre><code class="javascript">    <span class="comment">//唤起弱提示</span>
+    AliBridge.call(<span class="string">"toast"</span>,{
+        content:<span class="string">"这是弱提示"</span>
+    },<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
     });
 
-    //返回当当前页面时唤起的事件
-    AB.on(&quot;resume&quot;,function(){
-        AB.call(&quot;toast&quot;,{
-            content:&quot;重新唤起此页面&quot;
+    <span class="comment">//返回当当前页面时唤起的事件</span>
+    AliBridge.on(<span class="string">"resume"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        AliBridge.call(<span class="string">"toast"</span>,{
+            content:<span class="string">"重新唤起此页面"</span>
             });
-    });</pre><h2 id="接口列表">接口列表</h2><pre>    /**
+    });</code></pre></div><h3 id="接口列表">接口列表</h3><div class="highlight"><pre><code class="javascript">    /**
      *
      * 通用接口，调用方式等同AlipayJSBridge.call
      * 无需考虑接口的执行上下文，必定调用成功
@@ -236,15 +236,14 @@
      * @param {object} param 接口参数
      * @fn {function} fn 回调函数
      */
-    AB.call = function (name,param,fn)
+    AliBridge.call = function (name,param,fn)
 
     /**
      * 绑定全局事件
      * @param {string} event 事件名称
      * @param {function} [fn] 回调函数
      */
-    AB.on = function (event, fn)</pre><h2 id="js-api接口文档">JS API接口文档</h2><p>对于具体的JS API接口可参考 <a href="jsapi-doc.html">JS API</a></p>
-
+    AliBridge.on = function (event, fn)</code></pre></div>
             </div>
         </div>
     </div>
