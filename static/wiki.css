@@ -334,7 +334,6 @@ hr {
     -o-box-flex: 1;
     display: block;
     text-align: center;
-    padding: 1em 0;
     margin: 0;
     cursor: pointer;
     position: relative;
@@ -347,6 +346,7 @@ hr {
     font-family: "Microsoft YaHei";
     display: block;
     transition: all 0.25s;
+    padding: 1em 0;
 }
 
 .nav > li > a:hover, .nav > li > a.active {
@@ -357,7 +357,6 @@ hr {
     position: absolute;
     top: 57px;
     background: #fd7300;
-    /*border: 2px solid #fd7300;*/
     border-top: none;
     transition: all 0.25s;
     z-index: 9999;
@@ -875,8 +874,31 @@ hr {
     cursor: pointer;
     opacity: 1;
     font-weight: bold;
+    z-index: 99999;
 }
-
+.highlight{
+    position: relative;
+}
+.highlight:hover .clipbord{
+    display: block;
+}
+.clipbord{
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 12px;
+    padding: 5px;
+    border: 1px solid #aaa;
+    color: #555;
+    background-color: #ccc;
+    cursor: pointer;
+    border-radius: 7px;
+    box-shadow: 0 0 2px #ccc;
+}
+.show{
+    display: block;
+}
 @media (max-width: 640px){
     body{
         font: 14px/20px "Georgia", "Xin Gothic", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", "SimSun", sans-serif;
@@ -919,6 +941,8 @@ hr {
         visibility: visible;
         -webkit-transform: none;
         overflow: hidden;
+        background-color: #AC4C1E;
+        display: none;
     }
     .nav-sub > li{
         display: block;

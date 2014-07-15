@@ -3,16 +3,24 @@ define(function(require, exports, module) {
     $('.entry-content a').attr('target','_blank');
     //左侧菜单定位
     $(function(){
+        //加入复制到剪贴版功能
+        $(".highlight").append("<span class=\"clipbord\">复制到剪贴版</span>");
         //输入锚点自动定位
         $("#sidebar-fixed-nav a[href=" + window.location.hash + "]").click();
         //获取要定位元素距离浏览器顶部的距离
         var navTop = $(".header-nav").offset().top;
         //获取要定位元素与边栏的相对距离
         var sidebarBtmFixed = $(".header-nav").outerHeight() + parseInt($("#sidebar-wrapper").closest(".mar").css("marginTop"));
+        //控制滚动条高度
+        $("#sidebar-wrapper").css({maxHeight: $(window).height() - 87});
         //获取要定位元素在最底部时的offsetTop
         var nav_maxBottom = $(".footer").offset().top - $("#sidebar-wrapper").outerHeight() - sidebarBtmFixed;
         //滚动条事件
         $(window).scroll(function(){
+            //控制滚动条高度
+            $("#sidebar-wrapper").css({maxHeight: $(window).height() - 87});
+            //获取要定位元素在最底部时的offsetTop
+            var nav_maxBottom = $(".footer").offset().top - $("#sidebar-wrapper").outerHeight() - sidebarBtmFixed;
             //获取滚动条的滚动距离
             var scroT = $(this).scrollTop();
             if(scroT < navTop){                                   //nav未到顶一些如常
@@ -27,9 +35,29 @@ define(function(require, exports, module) {
                 $("#sidebar-wrapper").removeClass('sidebar-fixed-top').offset({top: nav_maxBottom + sidebarBtmFixed});
                 $(".navigation").addClass('navigation-fix navigation-btm').offset({top: nav_maxBottom});
             }
-            $("#sidebar-wrapper").css({maxHeight: $(window).height() - 87});
-        })
-        $("#sidebar-wrapper").css({maxHeight: $(window).height() - 87});
+        });
+        seajs.use(['gallery/zeroclipboard/1.3.5/zeroclipboard'], function(ZeroClipboard) {
+            var client = new ZeroClipboard($(".clipbord"), {
+                moviePath: "http://static.alipayobjects.com/gallery/zeroclipboard/1.3.5/ZeroClipboard.swf",
+                hoverClass: "show",
+                trustedDomains: ['*']
+            });
+            client.on('load', function(client) {
+                client.on('datarequested', function(client) {
+                    client.setText($(this).prev().text());
+                });
+                client.on('complete', function(client, args) {
+                    var t = $(this);
+                    $(this).html("复制成功");
+                    setTimeout(function () {
+                        t.html("复制到剪贴版");
+                    }, 3000);
+                });
+            });
+            client.on('wrongflash noflash', function() {
+                ZeroClipboard.destroy();
+            });
+        });
     })
     
     // var autoc = require('arale/autocomplete/1.2.3/autocomplete');
@@ -90,5 +118,12 @@ define(function(require, exports, module) {
         $("body").animate({scrollTop: $(t.attr("href")).offset().top - 57}, 800);
         url = window.location.pathname.split("/");
         history.pushState({}, "", url[url.length - 1] + t.attr("href"));
+    });
+    $(".nav > li > a").click(function () {
+        if($(this).next().length > 0){
+            event.preventDefault();
+            $(this).parent().siblings().find("ul").hide();
+            $(this).next().toggle();
+        }
     });
 });
