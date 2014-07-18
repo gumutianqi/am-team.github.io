@@ -6,7 +6,7 @@ html, body {
 }
 
 body, button, input, select, textarea {
-    font: 400 16px/1.62 "Georgia", "Xin Gothic", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", "SimSun", sans-serif;
+    font: 400 16px/1.5 "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
     color: #333;
 }
 
@@ -355,7 +355,7 @@ hr {
 
 .nav-sub {
     position: absolute;
-    top: 57px;
+    top: 56px;
     background: #fd7300;
     border-top: none;
     transition: all 0.25s;
@@ -619,6 +619,7 @@ hr {
     text-shadow:none;
     overflow-y: auto;
     overflow-x: hidden;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.5)
 }
 .sidebar-fixed-top{
     position: fixed !important;
@@ -634,8 +635,10 @@ hr {
 }
 
 #sidebar-wrapper #sidebar-fixed-nav dd a {
-    padding-left: 32px;
+    padding-left: 10px;
     font-size: 14px;
+    text-indent: 2em;
+    line-height: 2.5em;
 }
 
 #sidebar-fixed-nav .sidebar-fixed-nav-title {
@@ -864,6 +867,7 @@ hr {
     margin: 0;
 }
 .goTop{
+    display: none;
     position: fixed;
     right: 50px;
     bottom: 20px;
@@ -880,28 +884,30 @@ hr {
     position: relative;
 }
 .highlight:hover .clipbord{
-    display: block;
+    visibility: visible;
 }
 .clipbord{
-    display: none;
+    visibility: hidden;
     position: absolute;
     right: 10px;
-    top: 10px;
+    top: 6px;
     font-size: 12px;
-    padding: 5px;
+    padding: 0px 5px;
     border: 1px solid #aaa;
     color: #555;
     background-color: #ccc;
-    cursor: pointer;
     border-radius: 7px;
     box-shadow: 0 0 2px #ccc;
 }
 .show{
-    display: block;
+    visibility: visible !important;
+}
+.hide{
+    visibility: hidden !important;
 }
 @media (max-width: 640px){
     body{
-        font: 14px/20px "Georgia", "Xin Gothic", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", "SimSun", sans-serif;
+        font: 400 16px/1.5 "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
     }
     .header, .sub-nav {
         text-align: center;

@@ -1,45 +1,51 @@
 define(function(require, exports, module) {
     var $ = require('gallery/jquery/1.8.2/jquery');
     $('.entry-content a').attr('target','_blank');
-    //左侧菜单定位
-    $(function(){
-        //加入复制到剪贴版功能
-        $(".highlight").append("<span class=\"clipbord\">复制到剪贴版</span>");
-        //输入锚点自动定位
-        $("#sidebar-fixed-nav a[href=" + window.location.hash + "]").click();
+    //加入复制到剪贴版功能
+    $(".highlight").append("<span class=\"clipbord\">复制到剪贴版</span>");
+    function elFixed (scroT) {       //导航栏与边栏定位
+        //获取要定位元素与边栏的相对距离
+        var sidebarBtmFixed = $(".header-nav").outerHeight() + parseInt($("#sidebar-wrapper").closest(".mar").css("marginTop"), 0);
         //获取要定位元素距离浏览器顶部的距离
         var navTop = $(".header-nav").offset().top;
-        //获取要定位元素与边栏的相对距离
-        var sidebarBtmFixed = $(".header-nav").outerHeight() + parseInt($("#sidebar-wrapper").closest(".mar").css("marginTop"));
-        //控制滚动条高度
-        $("#sidebar-wrapper").css({maxHeight: $(window).height() - 87});
         //获取要定位元素在最底部时的offsetTop
         var nav_maxBottom = $(".footer").offset().top - $("#sidebar-wrapper").outerHeight() - sidebarBtmFixed;
-        //滚动条事件
-        $(window).scroll(function(){
-            //控制滚动条高度
-            $("#sidebar-wrapper").css({maxHeight: $(window).height() - 87});
-            //获取要定位元素在最底部时的offsetTop
-            var nav_maxBottom = $(".footer").offset().top - $("#sidebar-wrapper").outerHeight() - sidebarBtmFixed;
-            //获取滚动条的滚动距离
-            var scroT = $(this).scrollTop();
-            if(scroT < navTop){                                   //nav未到顶一些如常
-                $("#sidebar-wrapper").removeClass('sidebar-fixed-top').css({top: 'auto'});
-                $(".navigation").removeClass('navigation-fix navigation-btm').css({top: 'auto'});
-            }
-            else if(scroT >= navTop && scroT < nav_maxBottom){    //nav到顶sidebar未到底，fixed
-                $("#sidebar-wrapper").addClass('sidebar-fixed-top').css({top: 'auto'});
-                $(".navigation").addClass('navigation-fix').removeClass('navigation-btm').css({top: 0});
-            }
-            else{                                               //sidebar到底，fixed取消
-                $("#sidebar-wrapper").removeClass('sidebar-fixed-top').offset({top: nav_maxBottom + sidebarBtmFixed});
-                $(".navigation").addClass('navigation-fix navigation-btm').offset({top: nav_maxBottom});
-            }
-        });
+        //获取滚动条的滚动距离
+        if(scroT < navTop){                                   //nav未到顶一些如常
+            $("#sidebar-wrapper").removeClass('sidebar-fixed-top').css({top: 'auto'});
+            $(".navigation").removeClass('navigation-fix navigation-btm').css({top: 'auto'});
+        }
+        else if(scroT >= navTop && scroT < nav_maxBottom){    //nav到顶sidebar未到底，fixed
+            $("#sidebar-wrapper").addClass('sidebar-fixed-top').css({top: 'auto'});
+            $(".navigation").addClass('navigation-fix').removeClass('navigation-btm').css({top: 0});
+        }
+        else{                                               //sidebar到底，fixed取消
+            $("#sidebar-wrapper").removeClass('sidebar-fixed-top').offset({top: nav_maxBottom + sidebarBtmFixed});
+            $(".navigation").addClass('navigation-fix navigation-btm').offset({top: nav_maxBottom});
+        }
+    }
+    function goTopBtn (scroT) {
+        if (scroT >= $(window).height()) {
+            $(".goTop").fadeIn(200);
+        }
+        else{
+            $(".goTop").fadeOut(200);
+        }
+    }
+    $(function (){
+        //控制滚动条高度
+        $("#sidebar-wrapper").css({maxHeight: $(window).height() - 100});
+        var scrollTop = $(window).scrollTop();
+        titleActive();
+        elFixed(scrollTop);
+        goTopBtn(scrollTop);
+        //输入锚点自动定位
+        $("#sidebar-fixed-nav a[href=" + window.location.hash + "]").click();
         seajs.use(['gallery/zeroclipboard/1.3.5/zeroclipboard'], function(ZeroClipboard) {
             var client = new ZeroClipboard($(".clipbord"), {
                 moviePath: "http://static.alipayobjects.com/gallery/zeroclipboard/1.3.5/ZeroClipboard.swf",
                 hoverClass: "show",
+                forceHandCursor: true,
                 trustedDomains: ['*']
             });
             client.on('load', function(client) {
@@ -48,7 +54,7 @@ define(function(require, exports, module) {
                 });
                 client.on('complete', function(client, args) {
                     var t = $(this);
-                    $(this).html("复制成功");
+                    t.html("复制成功");
                     setTimeout(function () {
                         t.html("复制到剪贴版");
                     }, 3000);
@@ -58,7 +64,14 @@ define(function(require, exports, module) {
                 ZeroClipboard.destroy();
             });
         });
-    })
+    });
+
+    $(window).scroll(function(){
+        var scrollTop = $(window).scrollTop();
+        titleActive();
+        elFixed(scrollTop);
+        goTopBtn(scrollTop);
+    });
     
     // var autoc = require('arale/autocomplete/1.2.3/autocomplete');
     // console.log(autoc);
@@ -83,10 +96,6 @@ define(function(require, exports, module) {
     htmlStr+='</div>';
     htmlStr+='</div>';
     sidebar.append(htmlStr);
-    titleActive();
-    $(window).on('scroll',function(){
-        titleActive();
-    });
     function titleActive(){
         titleNodes.each(function(index){
             if(this.getBoundingClientRect().bottom > 17 && this.getBoundingClientRect().top < window.innerHeight){
@@ -113,7 +122,7 @@ define(function(require, exports, module) {
         $("body").animate({scrollTop: '0px'}, 800);
     });
     $("#sidebar-fixed-nav a").click(function () {       //动画滚动到指定锚点
-        history.pushState && event.preventDefault();    //向下兼容
+        history.pushState && event.preventDefault();    //不支持historyAPI则退化为默认方法
         var t = $(this), url;
         $("body").animate({scrollTop: $(t.attr("href")).offset().top - 57}, 800);
         url = window.location.pathname.split("/");
@@ -126,4 +135,13 @@ define(function(require, exports, module) {
             $(this).next().toggle();
         }
     });
+    $(".highlight pre").mousedown(function () {     //选择文本
+        $(this).siblings(".clipbord").addClass("hide");
+    })
+    $(document).mouseup(function () {
+        if (jQuery.trim(document.getSelection().toString()) == "") {
+            $(".clipbord").removeClass("hide");
+        };
+    })
 });
+

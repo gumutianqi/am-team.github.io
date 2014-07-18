@@ -161,24 +161,6 @@
     </li>
     
     <li>
-        <a  archiveId = "H5APP"
-        href="../h5app/about.html">
-        H5APP </a>
-        
-        <ul class="nav-sub">
-            <li>
-                <a href="../h5app/about.html">关于H5App</a>
-            </li>
-            
-            <li>
-                <a href="../h5app/ak47-doc.html">ak47</a>
-            </li>
-            
-        </ul>
-        
-    </li>
-    
-    <li>
         <a  archiveId = "wiki"
         href="../">
         知识库 </a>
@@ -209,6 +191,7 @@
     <div class="threecol meta">
     </div>
     
+
  
     <div class="ninecol content">
         <div class="document">
@@ -223,58 +206,58 @@
             <div class="entry-content">
                 <p>5分钟构建一个无线站点，为了便于大家理解，我们举一个账号登陆页面的例子</p>
 <h2 id="第一步-新建页面">第一步 新建页面</h2><p>新建一个文件，把后缀名改成html结尾，用任意一款编辑器打开此html页面，粘贴以下代码</p>
-<pre>    &lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-    &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;&lt;/title&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;/&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot;/&gt;
-    &lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;/&gt;
-    &lt;meta name=&quot;format-detection&quot; content=&quot;email=no&quot;/&gt;
-    &lt;meta name=&quot;viewport&quot;
-          content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0&quot;/&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-    &lt;/body&gt;
-    &lt;/html&gt;</pre><h3 id="注意事项"><em>注意事项</em></h3><ol>
+<div class="highlight"><pre><code class="xml">    <span class="doctype">&lt;!DOCTYPE html&gt;</span>
+    <span class="tag">&lt;<span class="title">html</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span><span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"apple-mobile-web-app-capable"</span> <span class="attribute">content</span>=<span class="value">"yes"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"apple-mobile-web-app-status-bar-style"</span> <span class="attribute">content</span>=<span class="value">"black"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"format-detection"</span> <span class="attribute">content</span>=<span class="value">"telephone=no"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"format-detection"</span> <span class="attribute">content</span>=<span class="value">"email=no"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span>
+          <span class="attribute">content</span>=<span class="value">"width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"</span>/&gt;</span>
+    <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></pre></div><h3 id="注意事项"><em>注意事项</em></h3><ol>
 <li>页面中utf-8的编码需要放在头部第一行</li>
 <li>对于telephone和email视页面中是否需要</li>
 <li>viewport建议使用该配置，如果需要修改，建议<a href="https://developer.apple.com/library/ios/documentation/appleapplications/reference/safariwebcontent/usingtheviewport/usingtheviewport.html">参考文档</a></li>
 </ol>
 <h2 id="第二步-加入css样式">第二步 加入CSS样式</h2><p>光秃秃的页面非常不好看，为此我们设计了一个完整的UI，提供了各类丰富的组件，只要简单地引入一个CSS链接即可.在viewport标签下引入一个CSS地址，参考代码如下</p>
-<pre>    &lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-    &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;&lt;/title&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;/&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot;/&gt;
-    &lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;/&gt;
-    &lt;meta name=&quot;format-detection&quot; content=&quot;email=no&quot;/&gt;
-    &lt;meta name=&quot;viewport&quot;
-          content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://a.alipayobjects.com/amui/dpl/1.0.2/amui.css&quot; media=&quot;all&quot;/&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-    &lt;/body&gt;
-    &lt;/html&gt;</pre><p>引入该css之后，就可以开始进行布局和设计各种控件类型了，具体内容可以参考如下<a href="http://aliceui.org/mobile/openapi.html">文档地址</a></p>
+<div class="highlight"><pre><code class="xml">    <span class="doctype">&lt;!DOCTYPE html&gt;</span>
+    <span class="tag">&lt;<span class="title">html</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span><span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"apple-mobile-web-app-capable"</span> <span class="attribute">content</span>=<span class="value">"yes"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"apple-mobile-web-app-status-bar-style"</span> <span class="attribute">content</span>=<span class="value">"black"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"format-detection"</span> <span class="attribute">content</span>=<span class="value">"telephone=no"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"format-detection"</span> <span class="attribute">content</span>=<span class="value">"email=no"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span>
+          <span class="attribute">content</span>=<span class="value">"width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> <span class="attribute">href</span>=<span class="value">"https://a.alipayobjects.com/amui/dpl/1.0.2/amui.css"</span> <span class="attribute">media</span>=<span class="value">"all"</span>/&gt;</span>
+    <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></pre></div><p>引入该css之后，就可以开始进行布局和设计各种控件类型了，具体内容可以参考如下<a href="http://aliceui.org/mobile/openapi.html">文档地址</a></p>
 <p>登陆页面需要一个用户名和密码的输入列表，我们在amui中找到相应的控件，将其html贴入页面中，示例代码如下</p>
-<pre>    &lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-    &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;&lt;/title&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;/&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot;/&gt;
-    &lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;/&gt;
-    &lt;meta name=&quot;format-detection&quot; content=&quot;email=no&quot;/&gt;
-    &lt;meta name=&quot;viewport&quot;
-          content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0&quot;/&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-    &lt;/body&gt;
-    &lt;/html&gt;</pre><h3 id="注意事项"><em>注意事项</em></h3><ol>
+<div class="highlight"><pre><code class="xml">    <span class="doctype">&lt;!DOCTYPE html&gt;</span>
+    <span class="tag">&lt;<span class="title">html</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span><span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"apple-mobile-web-app-capable"</span> <span class="attribute">content</span>=<span class="value">"yes"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"apple-mobile-web-app-status-bar-style"</span> <span class="attribute">content</span>=<span class="value">"black"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"format-detection"</span> <span class="attribute">content</span>=<span class="value">"telephone=no"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"format-detection"</span> <span class="attribute">content</span>=<span class="value">"email=no"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span>
+          <span class="attribute">content</span>=<span class="value">"width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"</span>/&gt;</span>
+    <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></pre></div><h3 id="注意事项"><em>注意事项</em></h3><ol>
 <li>页面中utf-8的编码需要放在头部第一行</li>
 <li>对于telephone和email视页面中是否需要</li>
 <li>viewport建议使用该配置，如果需要修改，建议<a href="https://developer.apple.com/library/ios/documentation/appleapplications/reference/safariwebcontent/usingtheviewport/usingtheviewport.html">参考文档</a></li>
@@ -340,7 +323,9 @@
     </div>
 </div>
 
+
  
+
  
     </div>
 </div>
@@ -432,7 +417,7 @@
     //                trigger: '#search',
     //                filter:"stringMatch",
     //                dataSource: [
-    //"../about/about.html","dev-exp-doc.html","mobile-platform-grade.html","website-guild.html","../amj/about.html","../amj/aj-doc.html","../amui/about.html","../amui/amui-doc.html","../amw/about.html","../amw/aw-doc.html","../h5app/about.html","../h5app/ak47-doc.html","../h5container/ab-doc.html","../h5container/about.html","../h5container/jsapi-doc.html","../wiki/bookmark.html",
+    //"../about/about.html","dev-exp-doc.html","mobile-platform-grade.html","website-guild.html","../amj/about.html","../amj/aj-doc.html","../amui/about.html","../amui/amui-doc.html","../amw/about.html","../amw/aw-doc.html","../default.html","../h5container/ab-doc.html","../h5container/about.html","../h5container/jsapi-doc.html","../wiki/bookmark.html",
     //                ]
     //            }).render().on('itemSelect',function  (data) {
     //              window.location = data.matchKey;

@@ -161,24 +161,6 @@
     </li>
     
     <li>
-        <a  archiveId = "H5APP"
-        href="../h5app/about.html">
-        H5APP </a>
-        
-        <ul class="nav-sub">
-            <li>
-                <a href="../h5app/about.html">关于H5App</a>
-            </li>
-            
-            <li>
-                <a href="../h5app/ak47-doc.html">ak47</a>
-            </li>
-            
-        </ul>
-        
-    </li>
-    
-    <li>
         <a  archiveId = "wiki"
         href="../">
         知识库 </a>
@@ -209,6 +191,7 @@
     <div class="threecol meta">
     </div>
     
+
  
     <div class="ninecol content">
         <div class="document">
@@ -728,7 +711,7 @@ body { font-size: 14px; font-size: 1.4rem; } /* =14px */
 h1   { font-size: 24px; font-size: 2.4rem; } /* =24px */
 
 
-</pre><h3 id="被点击元素的外观变化，可以使用样式来设定：">被点击元素的外观变化，可以使用样式来设定：</h3><pre>-webkit-tap-highlight-color: 颜色
+</pre><h3 id="当前点击元素样式：">当前点击元素样式：</h3><pre>-webkit-tap-highlight-color: 颜色
 
 
 </pre><h3 id="检测判断-iphone-ipod">检测判断 iPhone/iPod</h3><p>开发特定设备的移动网站，首先要做的就是设备侦测了。下面是使用Javascript侦测iPhone/iPod的UA，然后转向到专属的URL。</p>
@@ -744,7 +727,7 @@ h1   { font-size: 24px; font-size: 2.4rem; } /* =24px */
 　　header(&#39;Location: http://yoursite.com/iphone&#39;);
 　　exit();
 }
-</pre><h3 id="阻止旋转屏幕时自动调整字体大小">阻止旋转屏幕时自动调整字体大小</h3><pre>html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {-webkit-text-size-adjust:none;}
+</pre><h3 id="阻止屏幕旋转时字体自动调整">阻止屏幕旋转时字体自动调整</h3><pre>html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {-webkit-text-size-adjust:none;}
 
 
 </pre><h3 id="模拟-hover伪类">模拟:hover伪类</h3><p>因为iPhone并没有鼠标指针，所以没有hover事件。那么CSS :hover伪类就没用了。但是iPhone有Touch事件，onTouchStart 类似 onMouseOver，onTouchEnd 类似 onMouseOut。所以我们可以用它来模拟hover。使用Javascript：</p>
@@ -802,8 +785,8 @@ for(var i = 0; i &lt; myLinks.length; i++){
 <pre>&lt;input placeholder=&quot;Date&quot; class=&quot;textbox-n&quot; type=&quot;text&quot; onfocus=&quot;(this.type=&#39;date&#39;)&quot;  id=&quot;date&quot;&gt;
 
 </pre><p>因为text是支持placeholder的。因此当用户focus的时候自动把type类型改变为date，这样既有placeholder也有datepicker了</p>
-<h3 id="android上当viewport的width大于device-width时出现文字无故折行的解决办法">Android上当viewport的width大于device-width时出现文字无故折行的解决办法</h3><p><a href="http://www.iunbug.com/archives/2013/04/23/798.html">http://www.iunbug.com/archives/2013/04/23/798.html</a></p>
-<h3 id="如何实现打开已安装的app，若未安装则引导用户安装">如何实现打开已安装的app，若未安装则引导用户安装?</h3><p>来自 <a href="http://gallery.kissyui.com/redirectToNative/1.2/guide/index.html">http://gallery.kissyui.com/redirectToNative/1.2/guide/index.html</a> kissy mobile
+<h3 id="viewport导致文字无故折行">viewport导致文字无故折行</h3><p><a href="http://www.iunbug.com/archives/2013/04/23/798.html">http://www.iunbug.com/archives/2013/04/23/798.html</a></p>
+<h3 id="引导用户安装并打开app">引导用户安装并打开app</h3><p>来自 <a href="http://gallery.kissyui.com/redirectToNative/1.2/guide/index.html">http://gallery.kissyui.com/redirectToNative/1.2/guide/index.html</a> kissy mobile
 通过iframe src发送请求打开app自定义url scheme，如taobao://home（淘宝首页） 、etao://scan（一淘扫描）);
 如果安装了客户端则会直接唤起，直接唤起后，之前浏览器窗口（或者扫码工具的webview）推入后台；
 如果在指定的时间内客户端没有被唤起，则js重定向到app下载地址。
@@ -899,7 +882,7 @@ document.addEventListener(&quot;touchend&quot;, touchHandlerDummy, false);
 </pre><h3 id="消除ie10里面的那个叉号">消除ie10里面的那个叉号</h3><p><a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh767361.aspx" title="article4">IE Pseudo-elements</a></p>
 <pre>input:-ms-clear{display:none;}
 
-</pre><h3 id="关于ios与os端字体的优化-横竖屏会出现字体加粗不一致等">关于ios与os端字体的优化(横竖屏会出现字体加粗不一致等)</h3><p><a href="http://blog.sina.com.cn/s/blog_6da647a601011u4v.html" title="article5">mac下网页中文字体优化</a></p>
+</pre><h3 id="关于ios与os端字体的优化">关于ios与os端字体的优化</h3><p><a href="http://blog.sina.com.cn/s/blog_6da647a601011u4v.html" title="article5">mac下网页中文字体优化</a></p>
 <p><a href="http://stackoverflow.com/questions/3220662/uiwebview-font-is-thinner-in-portrait-than-landscape" title="article5">UIWebView font is thinner in portrait than landscape</a></p>
 <h4 id="判断用户是否是“将网页添加到主屏后，再从主屏幕打开这个网页”的">判断用户是否是“将网页添加到主屏后，再从主屏幕打开这个网页”的</h4><pre>navigator.standalone
 
@@ -1015,7 +998,7 @@ document.body.appendChild(ifr);
 /* iPhone 5 or iPod Touch 5th generation */
 
 }
-</pre><h3 id="使用媒体查询，提供不同的启动图片：">使用媒体查询，提供不同的启动图片：</h3><pre>&lt;link href=&quot;startup-568h.png&quot; rel=&quot;apple-touch-startup-image&quot; media=&quot;(device-height: 568px)&quot;&gt;
+</pre><h3 id="媒体查询，响应不同启动图片">媒体查询，响应不同启动图片</h3><pre>&lt;link href=&quot;startup-568h.png&quot; rel=&quot;apple-touch-startup-image&quot; media=&quot;(device-height: 568px)&quot;&gt;
 &lt;link href=&quot;startup.png&quot; rel=&quot;apple-touch-startup-image&quot; sizes=&quot;640x920&quot; media=&quot;(device-height: 480px)&quot;&gt;
 </pre><h3 id="拍照上传">拍照上传</h3><pre>&lt;input type=file accept=&quot;video/*&quot;&gt;
 &lt;input type=file accept=&quot;image/*&quot;&gt;
@@ -1230,7 +1213,7 @@ Access-Control-Allow-Headers &quot;Origin, X-Requested-With, Content-Type, Accep
 
 </pre><p>参考：</p>
 <p><a href="http://stackoverflow.com/questions/12090899/android-webview-jellybean-should-not-happen-no-rect-based-test-nodes-found">http://stackoverflow.com/questions/12090899/android-webview-jellybean-should-not-happen-no-rect-based-test-nodes-found</a></p>
-<h3 id="拿联系人的时候报-contactfindoptions-is-not-defined">拿联系人的时候报 ContactFindOptions is not defined</h3><p>出现这个问题可能是因为 Navigator 取 contacts 时绑定的 window.onload</p>
+<h3 id="contactfindoptions-is-not-defined">ContactFindOptions is not defined</h3><p>出现这个问题可能是因为 Navigator 取 contacts 时绑定的 window.onload</p>
 <p>注意使用 PhoneGap 的 API 时，一定要在 devicereay 事件的处理函数中使用 API</p>
 <pre>document.addEventListener(&quot;deviceready&quot;, onDeviceReady, false);
 
@@ -1249,7 +1232,9 @@ function callFetchContacts(){
     </div>
 </div>
 
+
  
+
  
     </div>
 </div>
@@ -1341,7 +1326,7 @@ function callFetchContacts(){
     //                trigger: '#search',
     //                filter:"stringMatch",
     //                dataSource: [
-    //"../about/about.html","dev-exp-doc.html","mobile-platform-grade.html","website-guild.html","../amj/about.html","../amj/aj-doc.html","../amui/about.html","../amui/amui-doc.html","../amw/about.html","../amw/aw-doc.html","../h5app/about.html","../h5app/ak47-doc.html","../h5container/ab-doc.html","../h5container/about.html","../h5container/jsapi-doc.html","../wiki/bookmark.html",
+    //"../about/about.html","dev-exp-doc.html","mobile-platform-grade.html","website-guild.html","../amj/about.html","../amj/aj-doc.html","../amui/about.html","../amui/amui-doc.html","../amw/about.html","../amw/aw-doc.html","../default.html","../h5container/ab-doc.html","../h5container/about.html","../h5container/jsapi-doc.html","../wiki/bookmark.html",
     //                ]
     //            }).render().on('itemSelect',function  (data) {
     //              window.location = data.matchKey;

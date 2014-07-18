@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="generator" content="nico 0.5.1">
     <meta name="theme" content="autumn 0.1">
-    <title>关于无线Web解决方案 - AM | AM - 移动Web开放解决方案</title>
+    <title>H5App应用 | AM - 移动Web开放解决方案</title>
     <link rel="stylesheet" href="../static/1140.css"/>
     <link rel="stylesheet" href="../static/wiki.css"/>
     <link rel="stylesheet" href="../static/syntax.css"/>
@@ -36,8 +36,8 @@
                     
 <ul class="nav">
     <li>
-        <a  class="active"  archiveId = "about"
-        href="about.html">
+        <a  archiveId = "about"
+        href="../about/about.html">
         关于AM </a>
         
     </li>
@@ -161,6 +161,24 @@
     </li>
     
     <li>
+        <a  archiveId = "H5APP"
+        href="about.html">
+        H5APP </a>
+        
+        <ul class="nav-sub">
+            <li>
+                <a href="about.html">关于H5App</a>
+            </li>
+            
+            <li>
+                <a href="ak47-doc.html">ak47</a>
+            </li>
+            
+        </ul>
+        
+    </li>
+    
+    <li>
         <a  archiveId = "wiki"
         href="../">
         知识库 </a>
@@ -196,32 +214,63 @@
     <div class="ninecol content">
         <div class="document">
             <div class="post-header">
-                <h2 class="document-title">关于无线Web解决方案 - AM</h2>
+                <h2 class="document-title">H5App应用</h2>
 
                 <div class="post-meta">
                     <!--<span></span> /-->
-                    <time datetime="2014-06-25">2014-06-25</time>
+                    <time datetime="2014-06-30">2014-06-30</time>
                 </div>
             </div>
             <div class="entry-content">
-                <h2 id="什么是am">什么是AM</h2><p>AM是支付宝无线Web开放解决方案的简称 ，全称AlipayMobileWebOpenSolution。</p>
-<p>AM不是一个具体的框架和类库，它是支付宝无线Web开发经验的总结和累积，集合了无线Web各要素在一体的一系列解决方案</p>
-<p>它从无线Web的各个方面提供了针对性的方案/工具集，能大幅度提升无线Web网站开发效率</p>
-<p>AM主要提供了移动Web开发的样式，脚本、控件以及WebApp开发等工具之外，还提供了相关的无线建站规范、指南以及文档和调试方案等</p>
-<h2 id="目标">目标</h2><p>快速开发性能高效、跨各设备平台以及用户体验良好的无线Web网站，并且它能和其他任何现存Web框架/类库整合</p>
-<h2 id="特点">特点</h2><ol>
-<li>轻量性</li>
-<li>低侵入性</li>
-<li>成品化</li>
-<li>便于使用</li>
+                <h2 id="离线类h5app开发">离线类H5App开发</h2><h2 id="前言">前言</h2><p>该指南旨在解决基于H5Container开发的H5App离线包的整体流程</p>
+<p>以下内容的demo工程可直接从github获取: <a href="https://github.com/am-team/am-team.github.io/blob/master/h5app/h5app-demo.zip">h5app-demo.zip</a></p>
+<h2 id="环境搭建">环境搭建</h2><p>H5App本身不需要特殊的开发环境，满足常规web站点的本地开发即可。但最终打包为amr包的打包工具是基于Node.js，因此需要先在开发环境安装好一个Node.js</p>
+<p>Node.js安装指南：
+<a href="http://sealmemory.blogspot.com/2013/12/install-node-js-in-windows-mac-os-x-linux.html"><a href="http://sealmemory.blogspot.com/2013/12/install-node-js-in-windows-mac-os-x-linux.html">http://sealmemory.blogspot.com/2013/12/install-node-js-in-windows-mac-os-x-linux.html</a></a></p>
+<h2 id="前期准备">前期准备</h2><ol>
+<li><p><code>应用中心接入</code>
+如果您开发的H5App是属于支付宝钱包应用中心的。那么首先你应该先向应用中心PD申请一个应用ID(appId)。<br/>
+相关申请和管理文档请参考：<a href="http://doc.alipay.net/pages/viewpage.action?pageId=74090565">钱包8.1应用中心接入应用操作文档</a></p>
+</li>
+<li><p><code>安装ak47</code> 可以用npm安装，具体安装帮助请点击 <a href="ak47-doc.html">这里</a></p>
+</li>
 </ol>
-<h2 id="简介">简介</h2><p>当前AM的解决方案有AMUI、AMJ、AMW、AK47、AMBridge五个主要成员。</p>
-<ul>
-<li><strong>AMUI</strong> 优化页面结构、样式的解决方案，包含并不限于通用样式库、场景解决方案等。</li>
-<li><strong>AMJ</strong> 用于提高和加快日常JS业务逻辑代码的开发进度和代码质量、运行效率，避免某些坑而提供个JS工具集。</li>
-<li><strong>AMW</strong> 无线Web上的控件集，其中包括各类拟态弹窗、日历等类natie控件，让用户在使用这些控件上达到一个良好的用户体验。</li>
-</ul>
-<h2 id="结构图">结构图</h2><p><img src="https://i.alipayobjects.com/i/localhost/jpg/201407/30qIpXPIaN.jpg" alt="AM结构组织图图"></p>
+<h2 id="项目构建">项目构建</h2><h3 id="自动构建">自动构建</h3><p>可使用 <code>ak47 init</code> 自动构建一个新项目，具体操作教程请参考 <a href="ak47-doc.html#启动方式：ak47-init">这里</a></p>
+<h3 id="手动构建：">手动构建：</h3><p>以一个appId为20000127，名称为<code>H5App-demo</code>，版本号为<code>1.0.0.0</code>的项目为例。</p>
+<p>1.在文件系统中新建一个名为H5App-demo的空文件夹，然后以此为根目录，新增一个www文件夹，之后的web开发源码都应该存于此文件夹下。</p>
+<p>2.H5App-demo根目录下新建一个Manifest.xml文件，该文件用于打包信息管理以及客户端升级信息管理。范例内容如下：<br/></p>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;package&gt;
+    &lt;!--业务包appId --&gt;
+    &lt;uid&gt;20000127&lt;/uid&gt;
+
+    &lt;!--业务包名称 --&gt;
+    &lt;name&gt;H5App-demo&lt;/name&gt;
+
+    &lt;!--业务包版本 --&gt;
+    &lt;version&gt;1.0.0.0&lt;/version&gt;
+
+    &lt;!--业务包介绍 --&gt;
+    &lt;descriptor&gt;H5App离线业务包打包样例&lt;/descriptor&gt;
+&lt;/package&gt;</pre><p>3.在www目录下新增index.html文件，js、css等web开发源文件</p>
+<p>最终项目文件系统目录应如下：</p>
+<pre>H5App-demo/
+    |-- www                         H5App源文件目录 (必须)
+        |-- css                     样式目录 (非必须)
+            `-- base.css            样式文件 (非必须)
+        |-- /js                     js脚本目录 (非必须)
+            `-- aliBridge.js        js文件 (非必须)
+        `-- index.html              静态页面 (非必须)
+    |-- res                         资源文件 (必须)
+        `-- icon_android.png        android版低清图标 (必须)
+        `-- icon_android@2x.png     android版高清图标 (必须)
+        `-- icon_ios.png            ios版低清图标 (必须)
+        `-- iicon_ios@2x.png        iso版高清图标 (必须)
+    `-- Manifest.xml                H5App配置文件 (必须)</pre><h2 id="项目打包">项目打包</h2><p>可使用 <code>ak47 pkg</code> 功能打包，具体操作教程请参考ak47 gitlab源</p>
+<h2 id="部署上传">部署上传</h2><p>应用中心后台部署相关资料请参考<a href="http://doc.alipay.net/pages/viewpage.action?pageId=74090565">钱包8.1应用中心接入应用操作文档</a>。</p>
+<p>额外需要重点关注<code>《扩展信息》</code>这个配置规则。
+如H5App-demo应用，它的最基本的扩展信息应为<code>{&quot;launchParams&quot;:{&quot;url&quot;:&quot;/www/index.htm&quot;}}</code>
+其中url参数代表了默认首页文件相对于项目文件系统根目录的绝对路径。</p>
 
             </div>
         </div>
@@ -322,7 +371,7 @@
     //                trigger: '#search',
     //                filter:"stringMatch",
     //                dataSource: [
-    //"about.html","../amg/dev-exp-doc.html","../amg/mobile-platform-grade.html","../amg/website-guild.html","../amj/about.html","../amj/aj-doc.html","../amui/about.html","../amui/amui-doc.html","../amw/about.html","../amw/aw-doc.html","../default.html","../h5container/ab-doc.html","../h5container/about.html","../h5container/jsapi-doc.html","../wiki/bookmark.html",
+    //"../about/about.html","../amg/dev-exp-doc.html","../amg/mobile-platform-grade.html","../amg/website-guild.html","../amj/about.html","../amj/aj-doc.html","../amui/about.html","../amui/amui-doc.html","../amw/about.html","../amw/aw-doc.html","../default.html","about.html","ak47-doc.html","../h5container/ab-doc.html","../h5container/about.html","../h5container/jsapi-doc.html","../wiki/bookmark.html",
     //                ]
     //            }).render().on('itemSelect',function  (data) {
     //              window.location = data.matchKey;

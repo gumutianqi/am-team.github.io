@@ -161,24 +161,6 @@
     </li>
     
     <li>
-        <a  archiveId = "H5APP"
-        href="../h5app/about.html">
-        H5APP </a>
-        
-        <ul class="nav-sub">
-            <li>
-                <a href="../h5app/about.html">关于H5App</a>
-            </li>
-            
-            <li>
-                <a href="../h5app/ak47-doc.html">ak47</a>
-            </li>
-            
-        </ul>
-        
-    </li>
-    
-    <li>
         <a  archiveId = "wiki"
         href="../">
         知识库 </a>
@@ -209,6 +191,7 @@
     <div class="threecol meta">
     </div>
     
+
  
     <div class="ninecol content">
         <div class="document">
@@ -244,7 +227,7 @@
 <script type="text/javascript" src="https://a.alipayobjects.com/anima/dpl/1.2.2/amui.js"></script>
 
 <h2 id="使用方法">使用方法</h2><h3 id="引入amui-css">引入amui.css</h3><blockquote>
-<p>注意最新目录为anima/dpl下属目录。</p>
+<p>注意最新目录为anima/dpl下属目录。 </p>
 </blockquote>
 <div class="highlight"><pre><code class="xml"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> <span class="attribute">href</span>=<span class="value">"https://a.alipayobjects.com/anima/dpl/1.2.2/amui.css"</span> <span class="attribute">media</span>=<span class="value">"all"</span>&gt;</span></code></pre></div><h3 id="老版本amui">老版本amui</h3><blockquote>
 <p>如发现您的amui是老版本，不在anima/dpl下属目录，那么您使用的是老版本，请酌情考虑升级。</br>
@@ -276,7 +259,7 @@ anima版本amui和老版本amui不互相兼容，且老版本amui后续不再更
 <blockquote>
 <p>例：amui.css和city-select两个文件，使用 <strong><em>,</em></strong>进行文件分隔， <strong><em>??</em></strong>让文件名与域名隔离。</p>
 </blockquote>
-<div class="highlight"><pre><code class="xml"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> <span class="attribute">href</span>=<span class="value">"https://a.alipayobjects.com/??anima/dpl/1.2.2/anima.css,anima/dpl/1.2.2/view/city-select.css"</span> <span class="attribute">media</span>=<span class="value">"all"</span>&gt;</span></code></pre></div><h2 id="布局">布局</h2><h3 id="弹性布局">弹性布局</h3><p>弹性布局是CSS3新引入的布局机制，根据下属弹性元素个数，动态分配空间。可以使用 <strong><em>am-flexbox</em></strong>结合 <strong><em>am-flexbox-item</em></strong>来搭建。</p>
+<div class="highlight"><pre><code class="xml"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> <span class="attribute">href</span>=<span class="value">"https://a.alipayobjects.com/??anima/dpl/1.2.2/amui.css,anima/dpl/1.2.2/view/city-select.css"</span> <span class="attribute">media</span>=<span class="value">"all"</span>&gt;</span></code></pre></div><h2 id="布局">布局</h2><h3 id="弹性布局">弹性布局</h3><p>弹性布局是CSS3新引入的布局机制，根据下属弹性元素个数，动态分配空间。可以使用 <strong><em>am-flexbox</em></strong>结合 <strong><em>am-flexbox-item</em></strong>来搭建。</p>
 <blockquote>
 <p>弹性布局的优点：动态分配剩余空间，增删元素，都会达成新的平衡</p>
 </blockquote>
@@ -1784,7 +1767,9 @@ anima版本amui和老版本amui不互相兼容，且老版本amui后续不再更
     </div>
 </div>
 
+
  
+
  
     </div>
 </div>
@@ -1876,7 +1861,7 @@ anima版本amui和老版本amui不互相兼容，且老版本amui后续不再更
     //                trigger: '#search',
     //                filter:"stringMatch",
     //                dataSource: [
-    //"../about/about.html","../amg/dev-exp-doc.html","../amg/mobile-platform-grade.html","../amg/website-guild.html","../amj/about.html","../amj/aj-doc.html","about.html","amui-doc.html","../amw/about.html","../amw/aw-doc.html","../h5app/about.html","../h5app/ak47-doc.html","../h5container/ab-doc.html","../h5container/about.html","../h5container/jsapi-doc.html","../wiki/bookmark.html",
+    //"../about/about.html","../amg/dev-exp-doc.html","../amg/mobile-platform-grade.html","../amg/website-guild.html","../amj/about.html","../amj/aj-doc.html","about.html","amui-doc.html","../amw/about.html","../amw/aw-doc.html","../default.html","../h5container/ab-doc.html","../h5container/about.html","../h5container/jsapi-doc.html","../wiki/bookmark.html",
     //                ]
     //            }).render().on('itemSelect',function  (data) {
     //              window.location = data.matchKey;
