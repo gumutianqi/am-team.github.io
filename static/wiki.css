@@ -621,10 +621,10 @@ hr {
     overflow-x: hidden;
     box-shadow: 0 2px 3px rgba(0,0,0,0.5)
 }
-.sidebar-fixed-top{
-    position: fixed !important;
+#sidebar-wrapper.sidebar-fixed-top{
+    position: fixed;
     top: 87px !important;
-    width: 26.05% !important;
+    width: 26.05%;
 }
 #sidebar-fixed-nav{
     border-bottom: solid 1px #bdbdbd;
@@ -913,7 +913,7 @@ hr {
         text-align: center;
     }
     .navbar-toggle{
-        display: block !important;
+        display: block;
     }
     .slogan{
         text-align: left;
@@ -967,8 +967,8 @@ hr {
         width: 94%;
     }
     .navigation{
-        position: relative !important;  
-        top: auto !important;      
+        position: relative;  
+        top: auto;      
     }
     .navigation .nav{
         display: block;
@@ -976,7 +976,7 @@ hr {
     #sidebar-wrapper{
         position: relative !important;
         width:100% !important;
-        max-width: none !important;
+        max-width: none;
         top: auto !important;
         text-shadow:none;
     }
