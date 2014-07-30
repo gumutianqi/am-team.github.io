@@ -203,13 +203,13 @@
                 </div>
             </div>
             <div class="entry-content">
-                <h2 id="源代码">源代码</h2><p><a href="https://github.com/am-team/amWidget/tree/master/dist">amw源代码</a></p>
+                <h2 id="源代码地址">源代码地址</h2><p><a href="https://github.com/am-team/amWidget/tree/master/dist">amw源代码</a></p>
 <h2 id="button">button</h2><p>模拟按钮在按下的同时，手指移动后恢复未点击状态</p>
 <h3 id="示例代码">示例代码</h3><p>html
 在html表里直接使用以下的标志，该组件在dom ready之后，会对以下所有具有这样特性的button进行初始化</p>
 <div class="highlight"><pre><code class="xml"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">data-active-class</span>=<span class="value">"hover"</span>&gt;</span>            //声明按下的状态效果class名为hover</code></pre></div><p>js
 如果你在页面上动态加入了按钮之后，则需要使用js的方式进行初始化</p>
-<div class="highlight"><pre><code class="javascript">    <span class="keyword">var</span> oBtn = <span class="keyword">new</span> AW.button(document.getElementById(<span class="string">'#btn'</span>)});    <span class="comment">//将#btn作为Button的实例化</span>
+<div class="highlight"><pre><code class="javascript">    <span class="keyword">var</span> oBtn = AW.button(document.getElementById(<span class="string">'#btn'</span>)});    <span class="comment">//将#btn作为Button的实例化</span>
     oBtn.unlock();                <span class="comment">//按钮立刻可以点击并触发事件</span>
     oBtn.tap(                    <span class="comment">//绑定指定的点击事件，在1000毫秒内不可再次触发亦不可点击</span>
         <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
