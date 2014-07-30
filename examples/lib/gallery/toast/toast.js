@@ -165,29 +165,11 @@ var _toastSetup = {
         return this;
     },
     /**
-     * @description 定位（绝对居中）
-     *
-     */
-    setPostion : function(toastDom){
-        window.setTimeout(function(){
-
-
-
-
-
-            toastDom.style.marginLeft = '-' + toastDom.offsetWidth / 2 + 'px';
-
-
-
-        }, 0)
-    },
-    /**
      * @description 显示toast
      *
      */
     show: function () {
         this.hide();
-        this.setPostion(this.toastDom);
         this.toastDom.classList.remove('am-toast-hide');
         this.toastDom.classList.add('am-toast-show');
         this.hideDelay();
