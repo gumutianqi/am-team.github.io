@@ -52,7 +52,7 @@ var _alipayContainer = {
                 var bridge = window.AlipayJSBridge;
                 bridge.call.apply(bridge, args);
             };
-        window.AlipayJSBridge ? fn : document.addEventListener("AlipayJSBridgeReady", function () {
+        window.AlipayJSBridge ? fn() : document.addEventListener("AlipayJSBridgeReady", function () {
             fn();
         }, !1);
     },
@@ -62,38 +62,41 @@ var _alipayContainer = {
      * @returns {Boolean}
      *
      */
-    checkJSAPI : function (apiName) {
+    checkJSAPI : function (apiName, isPassCallback) {
         //异常判断
         if (typeof(apiName) === 'undefined' || apiName === '') {
-            return false;
+            isPassCallback(false);
         }
         //容器版本低于8.1，不支持checkJSAPI方法
         if (this.attr.version < 8.1) {
-            if (apiName === 'tradePay' || apiName === 'startApp' || apiName === 'titlebar' || apiName === 'toolbar' || apiName === 'loading' || apiName === 'toast' || apiName === 'login' || apiName === 'sendSMS' || apiName === 'contact') {
-                return true;
+            if (apiName === 'tradePay' || apiName === 'startApp' || apiName === 'titlebar' || apiName === 'toolbar' || apiName === 'showLoading' || apiName === 'hideLoading' || apiName === 'toast' || apiName === 'login' || apiName === 'sendSMS' || apiName === 'contact') {
+                isPassCallback(true);
             } else {
-                return false;
+                isPassCallback(false);
             }
         }
         //调用容器checkJSAPI
         this.callBridge('checkJSAPI', {
             api: apiName
         }, function (result) {
-            return result.available;
+            isPassCallback(result.available);
         });
     },
     /**
      * @description 调用容器方法（loading）
      *
      */
-    callApi : function () {
-        if (loading.options.type === 'success' || loading.options.type === 'error') {
-            //执行容器loading
+    callApi : function (action) {
+        //执行容器loading
+        if(action === 'show') {
             this.callBridge('showLoading', {
                 text: loading.options.message,
                 delay: loading.options.showDelay
             });
+        } else if(action === 'hide') {
+            this.callBridge('hideLoading');
         }
+
     }
 }
 
@@ -110,11 +113,15 @@ var _loadingSetup = {
      */
     init: function () {
         //开启容器，在容器内并且容器支持该方法，走容器
-        if(loading.options.callContainer && _alipayContainer.attr.isIn && _alipayContainer.checkJSAPI('loading')) {
-            _alipayContainer.callApi();
-        }
-        //js方法
-        else {
+        if(loading.options.callContainer === 'true' && _alipayContainer.attr.isIn) {
+            _alipayContainer.checkJSAPI('showLoading', function(isPass){
+                if(isPass) {
+                    _alipayContainer.callApi('show');
+                } else {
+                    this.setCSS().setHTML().showDelay();
+                }
+            });
+        } else {
             this.setCSS().setHTML().showDelay();
         }
     },
@@ -177,11 +184,28 @@ var _loadingSetup = {
      *
      */
     hide: function () {
-        clearTimeout(this.showDelayTimeout);
-        if (this.loadingDom) {
-            this.loadingDom.classList.remove('am-loading-show');
-            this.loadingDom.classList.add('am-loading-hide');
+        var that = this;
+        function hideLoading(){
+            clearTimeout(that.showDelayTimeout);
+            if (that.loadingDom) {
+                that.loadingDom.classList.remove('am-loading-show');
+                that.loadingDom.classList.add('am-loading-hide');
+            }
         }
+
+        //开启容器，在容器内并且容器支持该方法，走容器方法
+        if(loading.options.callContainer === 'true' && _alipayContainer.attr.isIn) {
+            _alipayContainer.checkJSAPI('hideLoading', function(isPass){
+                if(isPass) {
+                    _alipayContainer.callApi('hide');
+                } else {
+                    hideLoading();
+                }
+            });
+        } else {
+            hideLoading();
+        }
+
     },
     showDelayTimeout: {},
     /**

@@ -52,7 +52,7 @@ var _alipayContainer = {
                 var bridge = window.AlipayJSBridge;
                 bridge.call.apply(bridge, args);
             };
-        window.AlipayJSBridge ? fn : document.addEventListener("AlipayJSBridgeReady", function () {
+        window.AlipayJSBridge ? fn() : document.addEventListener("AlipayJSBridgeReady", function () {
             fn();
         }, !1);
     },
@@ -62,24 +62,24 @@ var _alipayContainer = {
      * @returns {Boolean}
      *
      */
-    checkJSAPI : function (apiName) {
+    checkJSAPI : function (apiName, isPassCallback) {
         //异常判断
         if (typeof(apiName) === 'undefined' || apiName === '') {
-            return false;
+            isPassCallback(false);
         }
         //容器版本低于8.1，不支持checkJSAPI方法
         if (this.attr.version < 8.1) {
-            if (apiName === 'tradePay' || apiName === 'startApp' || apiName === 'titlebar' || apiName === 'toolbar' || apiName === 'loading' || apiName === 'toast' || apiName === 'login' || apiName === 'sendSMS' || apiName === 'contact') {
-                return true;
+            if (apiName === 'tradePay' || apiName === 'startApp' || apiName === 'titlebar' || apiName === 'toolbar' || apiName === 'showLoading' || apiName === 'hideLoading' || apiName === 'toast' || apiName === 'login' || apiName === 'sendSMS' || apiName === 'contact') {
+                isPassCallback(true);
             } else {
-                return false;
+                isPassCallback(false);
             }
         }
         //调用容器checkJSAPI
         this.callBridge('checkJSAPI', {
             api: apiName
         }, function (result) {
-            return result.available;
+            isPassCallback(result.available);
         });
     },
     /**
@@ -123,11 +123,15 @@ var _dialogSetup = {
      */
     init: function () {
         //开启容器，在容器内并且容器支持该方法，走容器
-        if(dialog.options.callContainer && _alipayContainer.attr.isIn && _alipayContainer.checkJSAPI('alert')) {
-            _alipayContainer.callApi();
-        }
-        //js方法
-        else {
+        if(dialog.options.callContainer === 'true' && _alipayContainer.attr.isIn) {
+            _alipayContainer.checkJSAPI(dialog.options.type, function(isPass){
+                if(isPass) {
+                    _alipayContainer.callApi();
+                } else {
+                    this.setCSS().setHTML().show();
+                }
+            });
+        } else {
             this.setCSS().setHTML().show();
         }
     },
