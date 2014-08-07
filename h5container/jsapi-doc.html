@@ -321,8 +321,20 @@ AlipayJSBridge.on(<span class="string">'resume'</span>, <span class="function"><
 }, <span class="literal">false</span>);</code></pre></div><ul>
 <li>最低支持版本：8.2+</li>
 </ul>
-<h3 id="subtitleclick">subtitleClick</h3><ul>
+<h3 id="titleclick">titleClick</h3><ul>
 <li>version:8.2</li>
+<li>事件描述：点击标题触发回调</li>
+</ul>
+<div class="highlight"><pre><code class="javascript">AlipayJSBridge.on(<span class="string">'titleClick'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+}, <span class="literal">false</span>);</code></pre></div><ul>
+<li>最低支持版本：8.2+</li>
+</ul>
+<h3 id="subtitleclick">subtitleClick</h3><ul>
+<li><p>注：
+subtitleClick事件回调会触发titleClick回调，建议titleClick 和 subtitleClick只使用其中一个</p>
+</li>
+<li><p>version:8.2</p>
+</li>
 <li>事件描述：点击子标题触发回调</li>
 </ul>
 <div class="highlight"><pre><code class="javascript">AlipayJSBridge.on(<span class="string">'subtitleClick'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
