@@ -309,9 +309,11 @@ hr {
     margin-top: 0;
     width: 100%;
     max-width: none;
+    text-align: center;
 }
 .navigation-fix > .nav{
     max-width: 1140px;
+    width: 100%;
     margin: 0 auto;
 }
 .navigation-btm{

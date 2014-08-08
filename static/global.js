@@ -1,11 +1,18 @@
 define(function(require, exports, module) {
     var $ = require('gallery/jquery/1.8.2/jquery');
     function initPage () {        //分状态初始化函数
-        $('.entry-content a').attr('target','_blank');
+        $('.entry-content a').each(function (index) {       //本页面链接不开新页
+            if($(this).attr('href').indexOf("#") !== 0){
+                $(this).attr('target','_blank');
+            }
+        })
         //加入复制到剪贴版按钮
-        $(".highlight").append("<span class=\"clipbord\">复制到剪贴版</span>");
-        //锚点链接自动定位
-        $("#sidebar-fixed-nav a[href=" + window.location.hash + "]").click();
+        $(".highlight").append("<span class='clipbord'>复制到剪贴版</span>");
+        //锚点链接自动定位  
+        if(window.location.hash.length > 0){
+            var hash = jQuery.browser.safari ? decodeURI(window.location.hash) : window.location.hash;
+            $("html, body").animate({scrollTop: $(hash).offset().top - 57}, 800);
+        }
         _sidebarInit();
         _clipInit();
     }
@@ -31,17 +38,17 @@ define(function(require, exports, module) {
     $(".goTop").click(function () {                     //滚动到顶
         $("body").animate({scrollTop: '0'}, 400);
     });
-    $(".threecol.meta").on("click", "a", function () {       //动画滚动到指定锚点
+    $(".threecol.meta").on("click", "a", function (event) {       //动画滚动到指定锚点
         history.pushState && event.preventDefault();    //不支持historyAPI则退化为默认方法
         var t = $(this), url;
-        $("body").animate({scrollTop: $(t.attr("href")).offset().top - 57}, 800);
+        $("html, body").animate({scrollTop: $(t.attr("href")).offset().top - 57}, 800);
         url = window.location.pathname.split("/");
         history.pushState({}, "", url[url.length - 1] + t.attr("href"));
     });
     $(".navbar-toggle").click(function () {             //小屏下切换菜单
         $(".header-nav").slideToggle(800);
     });
-    $(".nav > li > a").click(function () {             //小屏下导航展开
+    $(".nav > li > a").click(function (event) {             //小屏下导航展开
         if($(this).next().length > 0){
             event.preventDefault();
             $(this).parent().siblings().find("ul").hide();
