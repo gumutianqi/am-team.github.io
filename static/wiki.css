@@ -327,6 +327,7 @@ hr {
     display: -moz-box;
     display: -o-box;
     margin: 0;
+    width: 100%;
 }
 
 .nav > li {
@@ -998,4 +999,5 @@ hr {
     position: absolute;
     top: -100px;
     right: -100px;
+    display: none;
 }
