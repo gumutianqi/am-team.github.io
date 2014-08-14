@@ -14,7 +14,12 @@ define(function(require, exports, module) {
             $("html, body").animate({scrollTop: $(hash).offset().top - 57}, 800);
         }
         _sidebarInit();
-        _clipInit();
+        if(!!navigator.plugins["Shockwave Flash"]){
+            _clipInit();
+        }
+        else{
+            $(".clipbord").hide();
+        }
     }
 
     function initScroll () {        //滚动响应函数
