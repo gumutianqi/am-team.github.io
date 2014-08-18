@@ -10,6 +10,7 @@ define(function(require, exports, module) {
         $(".highlight").append("<span class='clipbord'>复制到剪贴版</span>");
         //锚点链接自动定位  
         if(window.location.hash.length > 0){
+            //如果高于1.9则不支持jQuery.browser
             var hash = jQuery.browser.safari ? decodeURI(window.location.hash) : window.location.hash;
             $("html, body").animate({scrollTop: $(hash).offset().top - 57}, 800);
         }
