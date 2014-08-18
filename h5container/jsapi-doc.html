@@ -267,7 +267,7 @@ AlipayJSBridge.call(<span class="string">'popTo'</span>, {
 });
 
 <span class="comment">// 目标页代码</span>
-AlipayJSBridge.on(<span class="string">'resume'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> {</span>
+document.addEventListener(<span class="string">'resume'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> {</span>
      console.log(event.data);
      console.log(event.resumeParams);
 });</code></pre></div><ul>
