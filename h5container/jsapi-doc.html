@@ -1389,19 +1389,37 @@ AlipayJSBridge.call(<span class="string">'closeWebview'</span>);</code></pre></d
          url: <span class="string">'http://alipay.com'</span>
        }
      }, {
-           name: <span class="string">'SMS'</span>, <span class="comment">//短信</span>
-           param: {
-               content: <span class="string">'短信内容'</span>,
-               <span class="comment">//应业务方需求定制功能</span>
-        contentType: <span class="string">'url'</span>,
-               extData:<span class="string">''</span>
-           }
-       }, {
-           name: <span class="string">'CopyLink'</span>, <span class="comment">//复制链接</span>
-           param: {
-               url: <span class="string">'http://m.alipay.com'</span>
-           }
-       }]
+       name: <span class="string">'Weixin'</span>, <span class="comment">//微信</span>
+       param: {
+         title: <span class="string">'分享的标题'</span>,
+         content: <span class="string">'分享的内容'</span>,
+         imageUrl: <span class="string">'分享的图片地址'</span>,
+         captureScreen: <span class="literal">true</span>, 
+         url: <span class="string">'http://baidu.com'</span> 
+       }
+     }, {
+       name: <span class="string">'WeixinTimeLine'</span>, <span class="comment">//微信朋友圈</span>
+       param: {
+         title: <span class="string">'分享的标题'</span>,
+         content: <span class="string">'分享的内容'</span>,
+         imageUrl: <span class="string">'分享的图片地址'</span>,
+         captureScreen: <span class="literal">true</span>, 
+         url: <span class="string">'http://baidu.com'</span> 
+       }
+     },{
+       name: <span class="string">'SMS'</span>, <span class="comment">//短信</span>
+       param: {
+           content: <span class="string">'短信内容'</span>,
+           <span class="comment">//应业务方需求定制功能</span>
+           contentType: <span class="string">'url'</span>,
+           extData:<span class="string">''</span>
+       }
+     }, {
+       name: <span class="string">'CopyLink'</span>, <span class="comment">//复制链接</span>
+       param: {
+           url: <span class="string">'http://m.alipay.com'</span>
+       }
+     }]
 },<span class="function"><span class="keyword">function</span><span class="params">(result)</span>{</span>
 });</code></pre></div><ul>
 <li>参数</li>
@@ -1453,7 +1471,9 @@ AlipayJSBridge.call(<span class="string">'closeWebview'</span>);</code></pre></d
 </thead>
 <tbody>
 <tr>
-<td></td>
+<td>result</td>
+<td>dictionary</td>
+<td>android 无回调</td>
 </tr>
 </tbody>
 </table>
